@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.meetsl.scardview.SCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_size_8dp"
+        android:layout_marginEnd="@dimen/dimen_size_8dp"
+        app:cardCornerRadius="@dimen/text_size_14sp"
+        app:cardCornerVisibility="none"
+        app:cardElevation="4dp"
+        app:cardLightDirection="top"
+        app:cardPreventCornerOverlap="false"
+        app:cardShadowEndColor="#03C5002F"
+        app:cardShadowStartColor="#14C5002F"
+        app:cardUseCompatPadding="false"
+        app:cardUseCornerArea="false"
+        app:contentPaddingLeft="4dp"
+        app:contentPaddingRight="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/dimen_size_8dp">
+
+
+            <TextView
+                android:id="@+id/tvProductName"
+                style="@style/boldTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:text="@string/name_1_s" />
+
+            <TextView
+                android:id="@+id/tvTSUValue"
+                style="@style/regularTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:maxLines="1"
+                android:text="@string/id_1_s"
+                android:textSize="@dimen/text_size_12sp" />
+
+
+        </LinearLayout>
+
+
+    </com.meetsl.scardview.SCardView>
+</FrameLayout>

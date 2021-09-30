@@ -1,0 +1,4 @@
+<resources>
+
+    <item format="float" name="guide_percent" type="integer">0.54</item>
+</resources>

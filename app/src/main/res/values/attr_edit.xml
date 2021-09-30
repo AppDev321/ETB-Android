@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomEditText">
+        <attr name="android:inputType" />
+        <attr name="android:padding" />
+        <attr name="android:paddingLeft" />
+        <attr name="android:paddingRight" />
+        <attr name="android:paddingTop" />
+        <attr name="android:paddingBottom" />
+        <attr name="libIZO_setBackgroundColor" format="color" />
+        <attr name="libIZO_setBorderColor" format="color" />
+        <attr name="libIZO_setBorderView" format="boolean" />
+        <attr name="libIZO_setFont" format="string" />
+        <attr name="libIZO_setStrokeWidth" format="dimension" />
+        <attr name="libIZO_setCornerRadius" format="dimension" />
+        <attr name="libIZO_setClearIconVisible" format="boolean" />
+        <attr name="libIZO_clearIconTint" format="color" />
+        <attr name="libIZO_setCursorColor" format="color" />
+        <attr name="libIZO_hideShowPasswordIconTint" format="color" />
+        <attr name="libIZO_setPrefix" format="string" />
+        <attr name="libIZO_setPrefixTextColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundedButton">
+        <attr name="rb_fill_color" format="color"/>
+        <attr name="rb_stroke_width" format="dimension"/>
+        <attr name="rb_stroke_color" format="color"/>
+        <attr name="rb_pressed_color" format="color"/>
+        <attr name="rb_disabled_color" format="color"/>
+    </declare-styleable>
+
+</resources>

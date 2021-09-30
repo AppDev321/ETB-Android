@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:id="@+id/forms">
+        <item android:title="@string/forms">
+            <menu>
+                <item
+                    android:id="@+id/tbForm"
+                    android:icon="@drawable/ic_menu_tb_form"
+                    android:title="@string/tb_form" />
+            </menu>
+        </item>
+    </group>
+
+    <group
+        android:id="@+id/main"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/reports"
+            android:title="@string/reports">
+            <menu>
+
+                <item
+                    android:id="@+id/product_ledger"
+                    android:icon="@drawable/ic_product_ledger"
+                    android:title="@string/product_ledger"
+                    android:visible="false" />
+                <item
+                    android:id="@+id/nav_sale_purchase"
+                    android:icon="@drawable/ic_sale__purchase_summary"
+                    android:title="@string/sale_purchase"
+                    android:visible="false" />
+                <item
+                    android:id="@+id/nav_stock_position"
+                    android:icon="@drawable/ic_stock_position"
+                    android:title="@string/stock_position" />
+            </menu>
+        </item>
+    </group>
+
+
+    <group android:id="@+id/setting">
+        <item android:title="@string/setting">
+            <menu>
+
+                <item
+                    android:id="@+id/change_password"
+                    android:icon="@drawable/ic_change_password"
+                    android:title="@string/change_password" />
+
+                <item
+                    android:id="@+id/nav_sync"
+                    android:icon="@drawable/ic_baseline_sync_24"
+                    android:title="@string/sync" />
+
+                <item
+                    android:id="@+id/logout"
+                    android:icon="@drawable/ic_logout"
+                    android:title="@string/sign_out" />
+
+            </menu>
+        </item>
+    </group>
+
+
+</menu>

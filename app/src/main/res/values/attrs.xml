@@ -1,0 +1,15 @@
+<resources>
+    <declare-styleable name="FullscreenAttrs">
+        <attr name="fullscreenBackgroundColor" format="color" />
+        <attr name="fullscreenTextColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundedFieldView">
+
+        <attr name="editId" format="integer"/>
+        <attr name="inputPrefix" format="string" />
+        <attr name="drawablePadding" format="dimension" />
+        <attr name="elevation" format="dimension" />
+
+    </declare-styleable>
+</resources>

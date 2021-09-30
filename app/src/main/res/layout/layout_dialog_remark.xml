@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/text_view_heading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/toolbar_curve"
+        android:fontFamily="@font/open_sans_regular"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:padding="10dp"
+        android:text="@string/patient_search"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/text_size_16sp" />
+
+    <androidx.cardview.widget.CardView
+        style="@style/CardViewLight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <FrameLayout
+                style="@style/LargeInputField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_size_8dp"
+                android:layout_marginTop="@dimen/dimen_size_16dp"
+                android:layout_marginEnd="@dimen/dimen_size_8dp">
+
+                <com.tharsol.endtb.ui.widget.CustomEditText
+                    android:id="@+id/editMobilNumber"
+                    style="@style/LargeInputField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:hint="xxxxxxxxx"
+                    android:imeOptions="actionDone"
+                    android:inputType="phone"
+                    android:longClickable="false"
+                    android:maxLength="9"
+                    app:libIZO_setPrefix="@string/numer_prefix"
+                    app:libIZO_setPrefixTextColor="?subheadingColor" />
+
+            </FrameLayout>
+
+            <com.tharsol.endtb.ui.widget.RoundedButton
+                android:id="@+id/button_proceed"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_size_24dp"
+                android:layout_marginTop="@dimen/dimen_size_8dp"
+                android:layout_marginEnd="@dimen/dimen_size_24dp"
+                android:layout_marginBottom="@dimen/dimen_size_8dp"
+                android:text="@string/search" />
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>

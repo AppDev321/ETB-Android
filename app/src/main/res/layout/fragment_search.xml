@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.fragments.StockFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_size_8dp"
+        android:layout_marginTop="@dimen/dimen_size_8dp"
+        android:layout_marginEnd="@dimen/dimen_size_8dp"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="@dimen/field_container_height"
+            android:layout_weight="1"
+            android:background="@drawable/field_bg"
+            android:paddingStart="@dimen/dimen_size_16dp"
+            android:paddingEnd="@dimen/dimen_size_16dp">
+
+            <com.tharsol.endtb.ui.widget.CustomEditText
+                android:id="@+id/etMobileNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="4dp"
+                android:background="@android:color/transparent"
+                android:drawableEnd="@drawable/ic_search_icon"
+                android:drawablePadding="@dimen/dimen_size_8dp"
+                android:fontFamily="@font/open_sans_regular"
+                android:hint="XXXXXXXXX"
+                android:imeOptions="actionSearch"
+                android:inputType="number"
+                android:maxLength="9"
+                android:textSize="@dimen/text_size_16sp"
+                android:maxLines="1"
+                app:libIZO_setPrefix="@string/numer_prefix"
+                app:libIZO_setPrefixTextColor="?subheadingColor" />
+        </FrameLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSearch"
+            style="@style/ButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/search"
+            android:textSize="@dimen/text_size_12sp" />
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/includeBaseList"
+            layout="@layout/base_fragment_list"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnProceed"
+            style="@style/ButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_size_24dp"
+            android:layout_marginEnd="@dimen/dimen_size_24dp"
+            android:text="@string/proceed"
+            android:textSize="@dimen/text_size_12sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView3"
+            style="@style/regularTextViewStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/dimen_size_8dp"
+            android:textSize="@dimen/text_size_12sp"
+            android:text="@string/no_patient_found_against_above_mobile_number_if_you_want_to_add_new_patient_click_on_procced_button"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/btnProceed"
+            app:layout_constraintEnd_toEndOf="@+id/btnProceed"
+            app:layout_constraintStart_toStartOf="@+id/btnProceed" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimen_size_16dp"
+            android:src="@drawable/ic_search_failed"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/textView3"
+            app:layout_constraintEnd_toEndOf="@+id/btnProceed"
+            app:layout_constraintStart_toStartOf="@+id/btnProceed" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnProceed1"
+            style="@style/ButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_size_24dp"
+            android:layout_marginEnd="@dimen/dimen_size_24dp"
+            android:layout_marginBottom="@dimen/dimen_size_16dp"
+            android:text="@string/add_new_patient"
+            android:visibility="gone"
+            android:textSize="@dimen/text_size_12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

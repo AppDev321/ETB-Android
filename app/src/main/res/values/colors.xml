@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <color name="colorPrimary">@color/red</color>
+    <color name="colorPrimaryInverse">@color/red</color>
+
+    <color name="colorPrimaryDark">@color/red</color>
+    <color name="colorPrimaryDarkInverse">@color/red</color>
+
+    <color name="colorAccent">@color/white</color>
+    <color name="white">#ffffff</color>
+
+    <!--<color name="colorPrimaryDark">#303F9F</color>-->
+
+    <color name="black_overlay">#66000000</color>
+
+    <color name="colorDeepRed">#ff0900</color>
+    <color name="colorDelete">#C4F4511E</color>
+    <color name="colorGreen">#00897B</color>
+    <!--    <color name="colorSubHeading">#a6a6a6</color>-->
+    <color name="colorSubHeading">#c3c5c4</color>
+    <color name="colorDisableText">#858585</color>
+    <color name="colorSubHeadingTheme">#585858</color>
+    <color name="red">#c50030</color>
+    <color name="redShadow">#24B8032F</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="black_trans">#39000000</color>
+    <color name="bg_gradient_start">#efefef</color>
+    <color name="rb_default_fill_color">@color/red</color>
+    <color name="rb_default_disabled_color">#d8d8d8</color>
+    <color name="rb_darken_color">#B1032D</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
+    <color name="light_blue_A200">#FF40C4FF</color>
+    <color name="light_blue_A400">#FF00B0FF</color>
+</resources>

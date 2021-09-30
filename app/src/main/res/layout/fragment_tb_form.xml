@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_size_8dp"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/boldTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/patient_details"
+                android:textSize="@dimen/text_size_16sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/MediumRedTextViewStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="@dimen/dimen_size_8dp"
+                    android:layout_weight=".20"
+                    android:maxLines="2"
+                    android:text="@string/mobile_no_"
+                    app:autoSizeMaxTextSize="@dimen/text_size_12sp" />
+
+                <com.tharsol.endtb.ui.widget.RoundedFieldView
+                    android:id="@+id/editTextMobile"
+                    style="@style/RoundedInputFieldStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight=".9"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:maxLength="9"
+                    android:textColorHint="@color/colorSubHeading"
+                    app:drawablePadding="0dp"
+                    app:editId="@+id/input_mobile"
+                    app:elevation="@dimen/dimen_size_4dp"
+                    app:inputPrefix="@string/numer_prefix" />
+
+                <!--<FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/field_container_height"
+                    android:layout_weight=".80"
+                    android:background="@drawable/field_bg"
+                    android:paddingStart="24dp"
+                    android:paddingEnd="24dp">
+
+                    <com.tharsol.endtb.ui.widget.CustomEditText
+                        android:id="@+id/editTexstMobile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="4dp"
+                        android:background="@color/float_transparent"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:maxLength="9"
+                        android:textColor="@drawable/selector_edittext"
+                        android:textColorHint="@color/colorSubHeading"
+                        android:visibility="visible"
+                        app:libIZO_setPrefix="@string/numer_prefix"
+                        app:libIZO_setPrefixTextColor="?subheadingColor" />
+                </FrameLayout>-->
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/MediumRedTextViewStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="@dimen/dimen_size_8dp"
+                    android:layout_weight=".20"
+                    android:maxLines="1"
+                    android:text="@string/name"
+                    app:autoSizeMaxTextSize="@dimen/text_size_12sp" />
+
+                <com.tharsol.endtb.ui.widget.RoundedFieldView
+                    android:id="@+id/editTextPatientName"
+                    style="@style/RoundedInputFieldStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".9"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapCharacters"
+                    android:maxLength="@integer/length_user_name"
+                    app:editId="@+id/input_patient_name"
+                    app:elevation="@dimen/dimen_size_4dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/MediumRedTextViewStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="@dimen/dimen_size_8dp"
+                    android:layout_weight=".20"
+                    android:maxLines="1"
+                    android:text="@string/age"
+                    app:autoSizeMaxTextSize="@dimen/text_size_12sp" />
+
+                <com.tharsol.endtb.ui.widget.RoundedFieldView
+                    android:id="@+id/editTextPatientAge"
+                    style="@style/RoundedInputFieldStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".9"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:maxLength="3"
+                    app:editId="@+id/input_patient_age"
+                    app:elevation="@dimen/dimen_size_3.5dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/MediumRedTextViewStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="@dimen/dimen_size_4dp"
+                    android:layout_weight=".20"
+                    android:maxLines="1"
+                    android:text="@string/gender"
+                    app:autoSizeMaxTextSize="@dimen/text_size_12sp" />
+
+                <carbon.widget.LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".9"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/dimen_size_4dp"
+                    android:paddingBottom="@dimen/dimen_size_10dp">
+
+                    <carbon.widget.LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_size_48dp"
+                        android:layout_margin="@dimen/carbon_margin"
+                        android:background="#ffffff"
+                        app:carbon_cornerRadius="@dimen/dimen_size_24dp"
+                        app:carbon_elevation="@dimen/dimen_size_3.5dp"
+                        app:carbon_elevationShadowColor="@color/carbon_red_700">
+
+                        <carbon.widget.RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:paddingStart="@dimen/dimen_size_12dp"
+                            android:paddingEnd="@dimen/dimen_size_4dp">
+
+                            <RadioButton
+                                android:id="@+id/cbMale"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:includeFontPadding="false"
+                                android:text="MALE"
+                                android:textSize="@dimen/text_size_11sp" />
+
+                            <RadioButton
+                                android:id="@+id/cbFemale"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:includeFontPadding="false"
+                                android:text="FEMALE"
+                                android:textSize="@dimen/text_size_11sp" />
+
+                            <RadioButton
+                                android:id="@+id/cbOther"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:includeFontPadding="false"
+                                android:text="OTHER"
+                                android:textSize="@dimen/text_size_11sp" />
+
+
+                        </carbon.widget.RadioGroup>
+
+
+                    </carbon.widget.LinearLayout>
+
+                </carbon.widget.LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/MediumRedTextViewStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="@dimen/dimen_size_8dp"
+                    android:layout_weight=".20"
+                    android:maxLines="1"
+                    android:text="@string/distric"
+                    app:autoSizeMaxTextSize="@dimen/text_size_12sp" />
+
+                <com.tharsol.endtb.ui.widget.RoundedFieldView
+                    android:id="@+id/editTextDistrict"
+                    style="@style/RoundedInputFieldStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".9"
+                    android:focusable="false"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapCharacters"
+                    android:maxLength="@integer/length_user_name"
+                    app:editId="@+id/input_district_name"
+                    app:elevation="@dimen/dimen_size_2dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/MediumRedTextViewStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="@dimen/dimen_size_8dp"
+                    android:layout_weight=".20"
+                    android:maxLines="1"
+                    android:text="@string/locality"
+                    app:autoSizeMaxTextSize="@dimen/text_size_12sp" />
+
+                <com.tharsol.endtb.ui.widget.RoundedFieldView
+                    android:id="@+id/editTextLocality"
+                    style="@style/RoundedInputFieldStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".9"
+                    android:focusable="false"
+                    android:imeOptions="actionNext"
+                    app:editId="@+id/input_town_name"
+                    app:elevation="@dimen/dimen_size_2dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/MediumRedTextViewStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="@dimen/dimen_size_8dp"
+                    android:layout_weight=".20"
+                    android:maxLines="1"
+                    android:text="@string/cnic"
+                    app:autoSizeMaxTextSize="@dimen/text_size_12sp" />
+
+                <com.tharsol.endtb.ui.widget.RoundedFieldView
+                    android:id="@+id/editTextCnicNumber"
+                    style="@style/RoundedInputFieldStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".9"
+                    android:inputType="number"
+                    android:maxLength="13"
+                    app:editId="@+id/input_cnic"
+                    app:elevation="@dimen/dimen_size_2dp" />
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/boldTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/prescription_details"
+                android:textSize="@dimen/text_size_16sp" />
+
+            <TextView
+                android:id="@+id/tvPrescription"
+                style="@style/MediumRedTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/upload_prescription_image_here"
+                android:textColor="@color/colorPrimary"
+                app:drawableEndCompat="@drawable/ic_camera_plus" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dimen_size_8dp"
+                android:background="@drawable/bg_rounded_corner_border"
+                android:padding="2dp">
+
+                <com.rishabhharit.roundedimageview.RoundedImageView
+                    android:id="@+id/ivPrescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_placeholde_p"
+                    app:cornerRadius="@dimen/dimen_size_8dp" />
+
+            </FrameLayout>
+
+
+            <LinearLayout
+                android:id="@+id/mainMedContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_size_8dp"
+                    android:layout_marginEnd="@dimen/dimen_size_16dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/boldTextViewStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/medication_details"
+                        android:textSize="@dimen/text_size_16sp" />
+
+                    <TextView
+                        android:id="@+id/btnAddProduct"
+                        style="@style/StockItemTextViewStyle"
+                        android:layout_width="@dimen/dimen_size_100dp"
+                        android:layout_height="32dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/ic_red_button_small"
+                        android:gravity="center"
+                        android:text="@string/add_product"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/text_size_12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/productsContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnConfirm"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="64dp"
+                android:layout_marginTop="@dimen/dimen_size_16dp"
+                android:layout_marginEnd="64dp"
+                android:layout_marginBottom="@dimen/dimen_size_16dp"
+                android:text="@string/confirm"
+                android:textSize="@dimen/text_size_16sp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/disable"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@color/black_trans"
+        android:visibility="gone" />
+</FrameLayout>
+

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/dimen_size_8dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/linear_layout_buttons"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text_view_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/toolbar_curve"
+            android:fontFamily="@font/open_sans_regular"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:padding="8dp"
+            android:text="@string/choose_an_item"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_20sp" />
+
+        <TextView
+            android:id="@+id/text_view_sub_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_regular"
+            android:includeFontPadding="false"
+            android:paddingStart="@dimen/dimen_size_8dp"
+            android:paddingEnd="@dimen/dimen_size_8dp"
+            android:text="@string/description"
+            android:textSize="@dimen/text_size_12sp"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/edit_text_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_search_icon"
+            android:ellipsize="end"
+            android:focusable="false"
+            android:fontFamily="@font/open_sans_regular"
+            android:hint="@string/search"
+            android:imeOptions="actionDone"
+            android:maxLines="1"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:textSize="@dimen/text_size_18sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="ifContentScrolls"
+            android:scrollbars="vertical">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linear_layout_buttons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="4dp"
+        android:orientation="horizontal">
+
+        <com.tharsol.endtb.ui.widget.RoundedButton
+            android:id="@+id/button_cancel"
+            android:layout_width="90dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="4dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/open_sans_regular"
+            android:textColor="@color/white"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="@string/cancel" />
+
+        <com.tharsol.endtb.ui.widget.RoundedButton
+            android:id="@+id/button_none"
+            style="@style/ButtonStyle"
+            android:layout_width="90dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="4dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/open_sans_regular"
+            android:textColor="@color/white"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="@string/none"
+            android:visibility="gone" />
+
+        <com.tharsol.endtb.ui.widget.RoundedButton
+            android:id="@+id/button_ok"
+            android:layout_width="90dp"
+            android:layout_height="30dp"
+            android:fontFamily="@font/open_sans_regular"
+            android:ellipsize="end"
+            android:textColor="@color/white"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="@string/ok" />
+
+    </LinearLayout>
+
+</RelativeLayout>

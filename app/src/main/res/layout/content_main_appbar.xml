@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/toolbar_curve"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_size_20dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_size_tb_top_bar"
+        android:layout_marginStart="@dimen/dimen_size_8dp"
+        android:layout_marginEnd="@dimen/dimen_size_8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/btnUp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:contentDescription="drawer"
+                    android:src="@drawable/icon" />
+
+                <TextView
+                    android:id="@+id/topBarTitle"
+                    style="@style/boldTextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_11sp"
+                    android:layout_marginStart="@dimen/dimen_size_8dp"
+                    android:text="@string/app_name" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/mainPharmacyInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+
+                    <TextView
+                        style="@style/topBarRegularTextViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/welcome"
+                        android:textSize="@dimen/text_size_12sp" />
+
+                    <TextView
+                        android:id="@+id/pharmacyName"
+                        style="@style/topBarBoldTextViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textSize="@dimen/text_size_18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/date"
+                        style="@style/topBarRegularTextViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textSize="@dimen/text_size_12sp" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/topSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="@dimen/dimen_size_16dp"
+                    android:autofillHints="@string/mobile_no"
+                    android:layout_marginTop="@dimen/dimen_size_12dp"
+                    android:background="@drawable/bg_white_rounded_corner_border"
+                    android:drawableEnd="@drawable/ic_search_icon"
+                    android:focusable="false"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:includeFontPadding="false"
+                    android:hint="@string/mobile_no"
+                    android:inputType="text"
+                    android:textSize="@dimen/text_size_16sp"
+                    android:maxLength="10"
+                    android:minHeight="33dp"
+                    android:paddingStart="@dimen/dimen_size_16dp"
+                    android:paddingEnd="@dimen/dimen_size_16dp"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_marginTop="@dimen/dimen_size_4dp">
+
+                    <com.rishabhharit.roundedimageview.RoundedImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dimen_size_2dp"
+                        android:background="@drawable/bg_circle_border"
+                        android:src="@drawable/ic_add_icon"/>
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/profilePicture"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/bg_circle_border"
+            android:padding="@dimen/rounded_image_border_stroke_width"
+            android:src="@drawable/ic_pharma_image" />
+    </LinearLayout>
+</LinearLayout>

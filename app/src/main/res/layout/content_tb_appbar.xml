@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/toolbar_curve"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="24dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        android:layout_marginStart="@dimen/dimen_size_8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/dimen_size_8dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/btnUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="drawer"
+                android:src="@drawable/ic_baseline_arrow_back_24" />
+
+            <TextView
+                android:id="@+id/topBarTitle"
+                style="@style/ToolBarTextViewStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_size_8dp"
+                android:layout_weight="1"
+                android:text="@string/tb_notification_form"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/topSearchcontainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_size_16dp">
+
+            <EditText
+                android:id="@+id/topSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_size_16dp"
+                android:layout_marginEnd="@dimen/dimen_size_16dp"
+                android:background="@drawable/bg_white_rounded_corner_border"
+                android:drawableEnd="@drawable/ic_search_icon"
+                android:focusable="false"
+                android:fontFamily="@font/open_sans_regular"
+                android:hint="@string/mobile_no"
+                android:inputType="text"
+                android:maxLength="10"
+                android:minHeight="33dp"
+                android:paddingStart="@dimen/dimen_size_16dp"
+                android:paddingEnd="@dimen/dimen_size_16dp"
+                android:visibility="visible"
+                android:autofillHints="@string/mobile_no" />
+        </FrameLayout>
+    </LinearLayout>
+
+</LinearLayout>

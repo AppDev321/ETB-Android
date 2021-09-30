@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.meetsl.scardview.SCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_size_8dp"
+        android:layout_marginEnd="@dimen/dimen_size_8dp"
+        app:cardCornerRadius="@dimen/dimen_size_14dp"
+        app:cardCornerVisibility="none"
+        app:cardElevation="4dp"
+        app:cardLightDirection="top"
+        app:cardPreventCornerOverlap="false"
+        app:cardShadowEndColor="#03C5002F"
+        app:cardShadowStartColor="#14C5002F"
+        app:cardUseCompatPadding="false"
+        app:cardUseCornerArea="false"
+        app:contentPadding="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageViewmedType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_med_capsole" />
+
+            <TextView
+                android:id="@+id/tvProductName"
+                style="@style/MediumTextViewStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="Myrin Tablets"
+                app:layout_constraintBottom_toBottomOf="@+id/imageViewmedType"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/imageViewmedType"
+                app:layout_constraintTop_toTopOf="@+id/imageViewmedType" />
+
+            <TextView
+                android:id="@+id/tvTSU"
+                style="@style/MediumTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:maxLines="1"
+                android:text="@string/today_sale_units"
+                android:textSize="@dimen/text_size_12sp"
+                app:layout_constraintEnd_toEndOf="@+id/tvTSUValue"
+                app:layout_constraintStart_toStartOf="@+id/tvTSUValue"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewmedType"
+                tools:ignore="SmallSp" />
+
+            <TextView
+                android:id="@+id/tvMSU"
+                style="@style/MediumTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="@string/month_sale_units"
+                app:layout_constraintEnd_toEndOf="@+id/tvMSUValue"
+                app:layout_constraintStart_toStartOf="@+id/tvMSUValue"
+                app:layout_constraintTop_toTopOf="@+id/tvTSU"
+                android:textSize="@dimen/text_size_12sp"
+                tools:ignore="SmallSp" />
+
+            <TextView
+                android:id="@+id/tvStockQuantity"
+                style="@style/MediumTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="@string/stock_quantity"
+                android:textSize="@dimen/text_size_12sp"
+                tools:ignore="SmallSp"
+                app:layout_constraintEnd_toEndOf="@+id/tvStockQuantityValue"
+                app:layout_constraintStart_toStartOf="@+id/tvStockQuantityValue"
+                app:layout_constraintTop_toTopOf="@+id/tvMSU" />
+
+            <TextView
+                android:id="@+id/tvTSUValue"
+                style="@style/StockItemTextViewStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/dimen_size_28dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="@dimen/dimen_size_8dp"
+                android:background="@drawable/ic_red_button_small"
+                android:gravity="center"
+                android:text="00.00"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tvMSUValue"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvTSU" />
+
+            <TextView
+                android:id="@+id/tvMSUValue"
+                style="@style/StockItemTextViewStyle"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dimen_size_28dp"
+                android:minHeight="@dimen/dimen_size_28dp"
+                android:background="@drawable/ic_red_button_small"
+                android:layout_marginStart="@dimen/dimen_size_8dp"
+                android:layout_marginEnd="@dimen/dimen_size_8dp"
+                android:gravity="center"
+                android:text="00.00"
+                app:layout_constraintEnd_toStartOf="@+id/tvStockQuantityValue"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tvTSUValue"
+                app:layout_constraintTop_toTopOf="@+id/tvTSUValue" />
+
+            <TextView
+                android:id="@+id/tvStockQuantityValue"
+                style="@style/StockItemTextViewStyle"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dimen_size_28dp"
+                android:background="@drawable/ic_red_button_small"
+                android:gravity="center"
+                android:text="00.00"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tvMSUValue"
+                app:layout_constraintTop_toTopOf="@+id/tvMSUValue" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </com.meetsl.scardview.SCardView>
+</FrameLayout>

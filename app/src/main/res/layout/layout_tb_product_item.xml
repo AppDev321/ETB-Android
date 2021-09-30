@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.meetsl.scardview.SCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_size_8dp"
+        android:layout_marginEnd="@dimen/dimen_size_8dp"
+        app:cardCornerRadius="@dimen/text_size_14sp"
+        app:cardCornerVisibility="none"
+        app:cardElevation="4dp"
+        app:cardLightDirection="top"
+        app:cardPreventCornerOverlap="false"
+        app:cardShadowEndColor="#03C5002F"
+        app:cardShadowStartColor="#14C5002F"
+        app:cardUseCompatPadding="false"
+        app:cardUseCornerArea="false"
+        app:contentPaddingLeft="4dp"
+        app:contentPaddingRight="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_margin="@dimen/dimen_size_8dp"
+                android:src="@drawable/selector_btn_delete"
+                android:contentDescription="@string/cd_delete_product" />
+
+            <com.tharsol.endtb.ui.widget.RoundedFieldView
+                android:id="@+id/editTextProductName"
+                style="@style/RoundedInputFieldStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/select_product"
+                android:focusable="false"
+                android:maxLength="@integer/length_user_name"
+                app:elevation="@dimen/dimen_size_4dp"
+                android:inputType="textNoSuggestions"
+                app:editId="@+id/input_product_name"/>
+
+            <com.tharsol.endtb.ui.widget.RoundedFieldView
+                android:id="@+id/editTextProductQty"
+                style="@style/RoundedInputFieldStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:elevation="@dimen/dimen_size_4dp"
+                android:hint="@string/enter_quantity"
+                android:digits="0123456789."
+                android:maxLength="4"
+                android:inputType="number"
+                android:imeOptions="actionDone"
+                app:editId="@+id/input_quantity"/>
+
+        </LinearLayout>
+
+    </com.meetsl.scardview.SCardView>
+</FrameLayout>

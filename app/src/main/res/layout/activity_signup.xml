@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient"
+    android:orientation="vertical"
+    tools:context=".ui.SplashActivity">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/content_appbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="@dimen/logo_width"
+                android:layout_height="@dimen/logo_height"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dimen_size_32dp"
+                app:srcCompat="@drawable/ic_logo_tb_m" />
+
+            <com.addisonelliott.segmentedbutton.SegmentedButtonGroup
+                android:id="@+id/buttonSignupType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="@dimen/dimen_size_16dp"
+                android:layout_marginTop="@dimen/dimen_size_32dp"
+                android:layout_marginEnd="@dimen/dimen_size_16dp"
+                android:background="@color/white"
+                android:elevation="2dp"
+                app:borderColor="@color/colorPrimary"
+                app:borderWidth="1dp"
+                app:divider="@color/colorPrimary"
+                app:dividerPadding="0dp"
+                app:dividerWidth="1dp"
+                app:position="0"
+                app:radius="40dp"
+                app:ripple="true"
+                app:rippleColor="@color/colorPrimary"
+                app:selectedBackground="@color/colorPrimary">
+
+                <com.addisonelliott.segmentedbutton.SegmentedButton
+                    android:id="@+id/buttonPharmacy"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:padding="10dp"
+                    app:selectedTextColor="#fff"
+                    app:text="PHARMACY"
+                    app:textColor="@color/black"
+                    app:textSize="@dimen/text_size_16sp" />
+
+                <com.addisonelliott.segmentedbutton.SegmentedButton
+                    android:id="@+id/buttonDoctor"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:padding="10dp"
+                    app:selectedTextColor="#fff"
+                    app:text="DOCTOR"
+                    app:textColor="@color/black"
+                    app:textSize="@dimen/text_size_16sp" />
+            </com.addisonelliott.segmentedbutton.SegmentedButtonGroup>
+
+            <com.tharsol.endtb.ui.widget.RoundedFieldView
+                android:id="@+id/editTextMobile"
+                style="@style/RoundedInputFieldStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_size_16dp"
+                android:hint="XXXXXXXXX"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:maxLength="9"
+                android:textColorHint="@color/colorSubHeading"
+                app:drawablePadding="0dp"
+                app:editId="@+id/input_mobile"
+                app:inputPrefix="@string/numer_prefix" />
+
+            <com.tharsol.endtb.ui.widget.RoundedFieldView
+                android:id="@+id/editTextLincenseNumber"
+                style="@style/RoundedInputFieldStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+"
+                android:drawableStart="@drawable/ic_baseline_photo_filter_24"
+                android:hint="@string/licence_number"
+                android:imeOptions="actionNext"
+                android:inputType="textNoSuggestions"
+                app:editId="@+id/input_license" />
+
+            <com.tharsol.endtb.ui.widget.RoundedFieldView
+                android:id="@+id/editTextUserName"
+                style="@style/RoundedInputFieldStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_user_icon"
+                android:hint="@string/user_name"
+                android:imeOptions="actionNext"
+                android:inputType="textNoSuggestions"
+                android:maxLength="@integer/length_user_name"
+                app:editId="@+id/input_username" />
+
+            <com.tharsol.endtb.ui.widget.RoundedFieldView
+                android:id="@+id/editTextPassword"
+                style="@style/RoundedInputFieldStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_password_icon"
+                android:hint="@string/password"
+                android:imeOptions="actionNext"
+                android:inputType="textPassword"
+                android:maxLength="@integer/length_password"
+                app:editId="@+id/input_password" />
+
+            <com.tharsol.endtb.ui.widget.RoundedFieldView
+                android:id="@+id/editTextRepeatPassword"
+                style="@style/RoundedInputFieldStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_password_icon"
+                android:hint="@string/repeat_password"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:maxLength="@integer/length_password"
+                app:editId="@+id/input_confirm_password" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnGo"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_size_16dp"
+                android:layout_marginTop="@dimen/dimen_size_16dp"
+                android:layout_marginEnd="@dimen/dimen_size_16dp"
+                android:text="@string/sign_up"
+                android:textSize="@dimen/text_size_16sp" />
+
+            <TextView
+                android:id="@+id/textViewDescpLabel"
+                style="@style/tbControlTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_size_16dp"
+                android:layout_marginBottom="@dimen/dimen_size_16dp"
+                android:gravity="center"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@+id/imageView4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_size_8dp"
+                android:layout_marginEnd="@dimen/dimen_size_8dp"
+                android:layout_marginBottom="@dimen/dimen_size_16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="@dimen/dimen_size_150dp"
+                    android:layout_height="@dimen/dimen_size_37dp"
+                    app:srcCompat="@drawable/ic_stop_tb" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="@dimen/dimen_size_92dp"
+                    android:layout_height="@dimen/dimen_size_34dp"
+                    app:srcCompat="@drawable/ic_dopasi" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
