@@ -268,35 +268,6 @@
                     android:layout_marginBottom="@dimen/dimen_size_8dp"
                     android:layout_weight=".20"
                     android:maxLines="1"
-                    android:text="@string/locality"
-                    app:autoSizeMaxTextSize="@dimen/text_size_12sp" />
-
-                <com.tharsol.endtb.ui.widget.RoundedFieldView
-                    android:id="@+id/editTextLocality"
-                    style="@style/RoundedInputFieldStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".9"
-                    android:focusable="false"
-                    android:imeOptions="actionNext"
-                    app:editId="@+id/input_town_name"
-                    app:elevation="@dimen/dimen_size_2dp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    style="@style/MediumRedTextViewStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginBottom="@dimen/dimen_size_8dp"
-                    android:layout_weight=".20"
-                    android:maxLines="1"
                     android:text="@string/cnic"
                     app:autoSizeMaxTextSize="@dimen/text_size_12sp" />
 
@@ -349,48 +320,6 @@
 
             </FrameLayout>
 
-
-            <LinearLayout
-                android:id="@+id/mainMedContainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_size_8dp"
-                    android:layout_marginEnd="@dimen/dimen_size_16dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        style="@style/boldTextViewStyle"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/medication_details"
-                        android:textSize="@dimen/text_size_16sp" />
-
-                    <TextView
-                        android:id="@+id/btnAddProduct"
-                        style="@style/StockItemTextViewStyle"
-                        android:layout_width="@dimen/dimen_size_100dp"
-                        android:layout_height="32dp"
-                        android:layout_gravity="center"
-                        android:background="@drawable/ic_red_button_small"
-                        android:gravity="center"
-                        android:text="@string/add_product"
-                        android:textAllCaps="true"
-                        android:textSize="@dimen/text_size_12sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/productsContainer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical" />
-            </LinearLayout>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnConfirm"
