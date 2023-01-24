@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient"
+    android:orientation="vertical"
+    tools:context=".ui.NotificationDetailActivity">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/content_main_appbar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="15dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="View Prescription"
+            android:gravity="center_horizontal"
+            android:textSize="16dp"
+            android:textColor="@color/colorPrimary"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pharmacy: "
+                android:gravity="center_horizontal"
+                android:textSize="16dp"
+                android:textColor="@color/colorPrimary"/>
+
+            <TextView
+                android:id="@+id/textPharmacy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pharmacy: "
+                android:gravity="center_horizontal"
+                android:layout_marginStart="10dp"
+                android:textSize="16dp"
+                android:textColor="@color/black"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name of Patient: "
+                android:gravity="center_horizontal"
+                android:textSize="16dp"
+                android:textColor="@color/colorPrimary"/>
+
+            <TextView
+                android:id="@+id/textPatientName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pharmacy: "
+                android:gravity="center_horizontal"
+                android:layout_marginStart="10dp"
+                android:textSize="16dp"
+                android:textColor="@color/black"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="District: "
+                android:gravity="center_horizontal"
+                android:textSize="16dp"
+                android:textColor="@color/colorPrimary"/>
+
+            <TextView
+                android:id="@+id/textDistrict"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pharmacy: "
+                android:gravity="center_horizontal"
+                android:layout_marginStart="10dp"
+                android:textSize="16dp"
+                android:textColor="@color/black"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contact No: "
+                android:gravity="center_horizontal"
+                android:textSize="16dp"
+                android:textColor="@color/colorPrimary"/>
+
+            <TextView
+                android:id="@+id/textContact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pharmacy: "
+                android:gravity="center_horizontal"
+                android:layout_marginStart="10dp"
+                android:textSize="16dp"
+                android:textColor="@color/black"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Age: "
+                android:gravity="center_horizontal"
+                android:textSize="16dp"
+                android:textColor="@color/colorPrimary"/>
+
+            <TextView
+                android:id="@+id/textAge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pharmacy: "
+                android:gravity="center_horizontal"
+                android:layout_marginStart="10dp"
+                android:textSize="16dp"
+                android:textColor="@color/black"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

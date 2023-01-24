@@ -17,6 +17,7 @@ import com.tharsol.endtb.model.AddPatientEvent
 import com.tharsol.endtb.model.LocalResponse
 import com.tharsol.endtb.model.RefreshProduct
 import com.tharsol.endtb.network.FullSync
+import com.tharsol.endtb.ui.fragments.NotificationFragment
 import com.tharsol.endtb.ui.fragments.StockFragment
 import com.tharsol.endtb.ui.fragments.TbFormFragment
 import com.tharsol.endtb.util.*
@@ -44,7 +45,18 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         }
         binding?.navView?.setNavigationItemSelectedListener(this)
         binding!!.navView.getHeaderView(0).appVersion.text = MessageFormat.format("v{0}", Utilities.getCurrentAppVersion(this))
-        if (savedInstanceState == null) addFormFragment()
+        if (savedInstanceState == null) {
+
+
+            if (UserData.user?.DesignationId == "1" || UserData.user?.DesignationId == "4")
+            {
+                addNotificationFragment()
+            }
+            else{
+                addFormFragment()
+            }
+        }
+
         updateUserInfo()
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED)
         {
@@ -60,6 +72,14 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         binding!!.includeMain.include.topSearch.visibility = View.GONE
         binding!!.includeMain.include.mainPharmacyInfo.visibility = View.VISIBLE
         supportFragmentManager.beginTransaction().replace(R.id.container, StockFragment.newInstance(), StockFragment.TAG).commit()
+    }
+
+    private fun addNotificationFragment()
+    {
+        binding!!.includeMain.include.topBarTitle.text = getString(R.string.tb_notification_form)
+        binding!!.includeMain.include.topSearch.visibility = View.GONE
+        binding!!.includeMain.include.mainPharmacyInfo.visibility = View.VISIBLE
+        supportFragmentManager.beginTransaction().replace(R.id.container, NotificationFragment.newInstance(), NotificationFragment.TAG).commit()
     }
 
     private fun addFormFragment()

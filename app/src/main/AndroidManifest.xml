@@ -10,9 +10,9 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-feature android:name="android.hardware.camera.autofocus" />
-    <uses-feature android:name="android.hardware.camera"></uses-feature>
 
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-feature android:name="android.hardware.camera" />
 
     <application
         android:name=".util.App"
@@ -23,7 +23,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ETB"
         tools:replace="android:allowBackup,android:icon">
-
+        <activity
+            android:name=".ui.NotificationDetailActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.MainActivity"
             android:label="@string/title_activity_main"
@@ -52,11 +54,9 @@
         <activity
             android:name=".ui.ForgotPasswordActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".ui.FrameActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".ui.ChangePasswordActivity"
             android:screenOrientation="portrait" />

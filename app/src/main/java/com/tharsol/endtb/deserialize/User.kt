@@ -23,5 +23,12 @@ data class User(
 	val chemistName: String? = null,
 
 	@field:SerializedName("ChemistId")
-	val chemistId: String? = null
+	val chemistId: String? = null,
+
+	@field:SerializedName("DesignationId")
+	val DesignationId: String? = null,
+
+	@field:SerializedName("LocalityId")
+	val LocalityId: String? = null
+
 ) : Parcelable

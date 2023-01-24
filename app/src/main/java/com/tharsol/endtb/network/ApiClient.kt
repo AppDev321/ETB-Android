@@ -1,10 +1,7 @@
 package com.tharsol.endtb.network
 
 import com.tharsol.endtb.deserialize.*
-import com.tharsol.endtb.serialize.RequestChangePassword
-import com.tharsol.endtb.serialize.RequestForgot
-import com.tharsol.endtb.serialize.RequestLogin
-import com.tharsol.endtb.serialize.RequestRegister
+import com.tharsol.endtb.serialize.*
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -13,7 +10,7 @@ interface ApiClient {
     @POST("api/Account/register")
     suspend fun register(@Body body: RequestRegister): Response<LoginResponse>
 
-    @POST("api/Account/login")
+    @POST("api/Account/login_p")
     suspend fun login(@Body body: RequestLogin): Response<LoginResponse>
 
     @POST("api/Account/forgotpassword")
@@ -24,6 +21,9 @@ interface ApiClient {
 
     @GET("api/Patient/FindPatient")
     suspend fun searchPatient(@Query("mobileNumber") mobileNumber: String): Response<FindPatientResponse>
+
+    @POST("api/Patient/PatientList_P")
+    suspend fun searchPatientByDate(@Body body: RequestSearchByDatePatient): Response<FindPatientResponse>
 
     @GET(ServiceUrls.GET_PRODUCTS)
     suspend fun getProducts(): Response<ProductsResponse>
