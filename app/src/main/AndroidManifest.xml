@@ -24,6 +24,9 @@
         android:theme="@style/Theme.ETB"
         tools:replace="android:allowBackup,android:icon">
         <activity
+            android:name=".ui.FullScreenImageActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.NotificationDetailActivity"
             android:exported="false" />
         <activity
