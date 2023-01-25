@@ -121,5 +121,6 @@
     <string name="_92_800_55511">+92 800 55511</string>
     <string name="mobile_application_to_notify_tb_cases">Mobile Application To Notify TB Cases</string>
     <string name="upload_prescription_image_here">Upload Prescription image here</string>
+    <string name="notifcations">Notifcations</string>
 
 </resources>

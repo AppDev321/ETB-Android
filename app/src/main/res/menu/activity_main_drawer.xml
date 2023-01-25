@@ -3,6 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
+    <group android:id="@+id/home">
+        <item android:title="@string/menu_home">
+            <menu>
+                <item
+                    android:id="@+id/notify"
+                    android:icon="@drawable/home"
+                    android:title="@string/menu_home" />
+            </menu>
+        </item>
+    </group>
+
     <group android:id="@+id/forms">
         <item android:title="@string/forms">
             <menu>

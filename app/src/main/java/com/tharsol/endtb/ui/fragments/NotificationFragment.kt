@@ -61,7 +61,7 @@ class NotificationFragment : BaseListFragment(),
             try {
                 EventBus.getDefault().post(SearchedPatient(true))
                 val response =
-                    ApiAdapter.apiClient.searchPatientByDate(RequestSearchByDatePatient())
+                    ApiAdapter.apiClient.searchPatientByDate(RequestSearchByDatePatient("2023-01-25", ""))
                 swipe?.isRefreshing = false
                 if (response.isValid()) {
                     val innerResponse = response.body()

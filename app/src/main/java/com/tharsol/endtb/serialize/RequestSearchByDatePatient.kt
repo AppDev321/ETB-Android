@@ -3,7 +3,7 @@ import com.google.gson.annotations.SerializedName
 
 data class RequestSearchByDatePatient (
     @field:SerializedName("StartDate")
-    val StartDate: String = "",
+    val StartDate: String = "2023-01-25",
 
     @field:SerializedName("EndDate")
     val EndDate: String = ""

@@ -143,6 +143,12 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             {
                 val groupItems = it.getItem(itemNumber)
                 groupItems.title = Utilities.changeTextSize(Utilities.changeForeground(groupItems.title, ContextCompat.getColor(this, R.color.colorPrimary)), resources.getDimension(R.dimen.text_size_18sp).toInt())
+
+                if (itemNumber == 1)
+                {
+                    groupItems.isVisible =
+                        !(UserData.user?.DesignationId == "1" || UserData.user?.DesignationId == "4")
+                }
             }
         }
     }
@@ -168,9 +174,10 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         binding!!.drawerLayout.closeDrawer(GravityCompat.START)
         return when (item.itemId)
         {
-            R.id.nav_stock_position ->
+
+            R.id.notify ->
             {
-                addStockFragment()
+                addNotificationFragment()
                 true
             }
 
@@ -204,6 +211,8 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     {
         binding?.includeMain?.include?.pharmacyName?.text = UserData.user?.chemistName
         binding?.includeMain?.include?.date?.text = DateUtilz.formatHeaderViewDate(DateTime.now())
+
+
     }
 
     override fun getSearchView(): EditText
