@@ -178,7 +178,7 @@
                         android:id="@+id/textViewDescpLabel"
                         style="@style/tbControlTextViewStyle"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/dimen_size_200dp"
+                        android:layout_height="@dimen/dimen_size_100dp"
                         android:gravity="center"
                         android:visibility="visible" />
                 </LinearLayout>
@@ -203,8 +203,8 @@
 
         <ImageView
             android:id="@+id/imageView4"
-            android:layout_width="@dimen/dimen_size_150dp"
-            android:layout_height="@dimen/dimen_size_37dp"
+            android:layout_width="@dimen/dimen_size_120dp"
+            android:layout_height="@dimen/dimen_size_30dp"
             app:srcCompat="@drawable/ic_stop_tb" />
 
         <Space
