@@ -209,7 +209,13 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     private fun updateUserInfo()
     {
-        binding?.includeMain?.include?.pharmacyName?.text = UserData.user?.chemistName
+        if (UserData.user!!.chemistName.isNullOrBlank())
+        {
+            binding?.includeMain?.include?.pharmacyName?.text = UserData.user?.username
+        }
+        else{
+            binding?.includeMain?.include?.pharmacyName?.text = UserData.user?.chemistName
+        }
         binding?.includeMain?.include?.date?.text = DateUtilz.formatHeaderViewDate(DateTime.now())
 
 
