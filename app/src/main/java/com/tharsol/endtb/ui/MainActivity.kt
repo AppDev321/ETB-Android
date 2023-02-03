@@ -21,7 +21,7 @@ import com.tharsol.endtb.ui.fragments.NotificationFragment
 import com.tharsol.endtb.ui.fragments.StockFragment
 import com.tharsol.endtb.ui.fragments.TbFormFragment
 import com.tharsol.endtb.util.*
-import kotlinx.android.synthetic.main.nav_header_main.view.*
+//import kotlinx.android.synthetic.main.nav_header_main.view.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.joda.time.DateTime
@@ -44,7 +44,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             binding?.drawerLayout?.openDrawer(GravityCompat.START)
         }
         binding?.navView?.setNavigationItemSelectedListener(this)
-        binding!!.navView.getHeaderView(0).appVersion.text = MessageFormat.format("v{0}", Utilities.getCurrentAppVersion(this))
+//        binding!!.navView.getHeaderView(0).appVersion.text = MessageFormat.format("v{0}", Utilities.getCurrentAppVersion(this))
         if (savedInstanceState == null) {
 
 
@@ -53,6 +53,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 addNotificationFragment()
             }
             else{
+
                 addFormFragment()
             }
         }
@@ -142,12 +143,16 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             for (itemNumber in 0 until it.size())
             {
                 val groupItems = it.getItem(itemNumber)
-                groupItems.title = Utilities.changeTextSize(Utilities.changeForeground(groupItems.title, ContextCompat.getColor(this, R.color.colorPrimary)), resources.getDimension(R.dimen.text_size_18sp).toInt())
+                groupItems.title = Utilities.changeTextSize(Utilities.changeForeground(groupItems.title!!, ContextCompat.getColor(this, R.color.colorPrimary)), resources.getDimension(R.dimen.text_size_18sp).toInt())
 
                 if (itemNumber == 1)
                 {
                     groupItems.isVisible =
                         !(UserData.user?.DesignationId == "1" || UserData.user?.DesignationId == "4")
+                }
+                else if (itemNumber == 0)
+                {
+                    groupItems.isVisible = (UserData.user?.DesignationId == "1" || UserData.user?.DesignationId == "4")
                 }
             }
         }

@@ -74,9 +74,9 @@ open class SingleSelectionAdapter protected constructor(
                 if (TextUtils.isEmpty(item.description)) View.GONE else View.VISIBLE
             holder.binding.linearLayoutTwoDescriptions!!.visibility =
                 if (TextUtils.isEmpty(item.description1) && TextUtils.isEmpty(item.description2)) View.GONE else View.VISIBLE
-            holder.binding?.textViewDescription1.visibility =
+            holder.binding?.textViewDescription1!!.visibility =
                 if (TextUtils.isEmpty(item.description1)) View.GONE else View.VISIBLE
-            holder.binding?.textViewDescription2.visibility =
+            holder.binding?.textViewDescription2!!.visibility =
                 if (TextUtils.isEmpty(item.description2)) View.GONE else View.VISIBLE
             holder.binding.textViewDescription.text = item.description
             holder.binding.textViewDescription.setTextToHighlight(searchTag)

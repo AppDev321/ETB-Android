@@ -3,7 +3,6 @@ package com.tharsol.endtb.ui.fragments
 import android.Manifest
 import android.app.Activity
 import android.app.AlertDialog
-import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -480,18 +479,32 @@ class TbFormFragment : Fragment(), View.OnClickListener, CompoundButton.OnChecke
                     try {
 
                         binding.ivPrescription.setImageURI(contentURI)
-                        pictureFile = encodeImage(MediaStore.Images.Media.getBitmap(requireContext().contentResolver, contentURI))
 
-                        Utilities.showToast(requireContext(), pictureFile)
+                        try {
+                            val bytes = requireContext().contentResolver.openInputStream(contentURI!!)!!.readBytes()
+
+                            pictureFile = Base64.getEncoder().encodeToString(bytes)
+                        } catch (error: IOException) {
+                            error.printStackTrace() // This exception always occurs
+                        }
+
+//                        pictureFile = encodeImage(MediaStore.Images.Media.getBitmap(requireContext().contentResolver, contentURI))
+
+//                        Utilities.showToast(requireContext(), pictureFile)
                     } catch (e: IOException) {
                         e.printStackTrace()
 
                     }
                 }
             } else if (requestCode === REQUEST_PICTURE_CODE) {
-                val thumbnail: Bitmap? = data!!.extras!!["data"] as Bitmap?
+                val thumbnail: Bitmap? = data?.extras?.get("data") as Bitmap
 
-                pictureFile = encodeImage(thumbnail!!)
+                val byteArrayOutputStream = ByteArrayOutputStream()
+
+                thumbnail!!.compress(Bitmap.CompressFormat.JPEG, 70, byteArrayOutputStream)
+                val byteArray = byteArrayOutputStream.toByteArray()
+                val encoded: String = Base64.getEncoder().encodeToString(byteArray)
+                pictureFile = encoded
                 binding.ivPrescription.setImageBitmap(thumbnail)
                 //saveImage(thumbnail)
 

@@ -41,6 +41,21 @@ class NotificationDetailActivity : BaseActivity() {
                 }
 
             }
+
+            binding?.include?.btnUp?.setOnClickListener {
+                    this.finish()
+            }
+            binding?.imageView?.setOnClickListener {
+
+                if(notificationData.image != null && !notificationData.image.isEmpty())
+                {
+                    val intent = Intent(this@NotificationDetailActivity, FullScreenImageActivity::class.java).apply {
+                        putExtra("image", notificationData.image)
+                    }
+                    startActivity(intent)
+                }
+
+            }
         }
 
 
