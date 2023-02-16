@@ -11,6 +11,9 @@ interface ApiClient {
     suspend fun register(@Body body: RequestRegister): Response<LoginResponse>
 
     @POST("api/Account/login_p")
+    suspend fun login_p(@Body body: RequestLogin): Response<LoginResponse>
+
+    @POST("api/Account/login")
     suspend fun login(@Body body: RequestLogin): Response<LoginResponse>
 
     @POST("api/Account/forgotpassword")

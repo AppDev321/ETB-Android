@@ -100,6 +100,58 @@ class LoginActivity : BaseActivity()
             try
             {
                 val request = RequestLogin(binding?.username?.text?.toString(), binding?.password?.text.toString(), Utilities.getDeviceUdId(this@LoginActivity))
+                val response = ApiAdapter.apiClient.login_p(request)
+
+                if (response.isValid())
+                {
+                    val innerResponse = response.body()
+                    if (innerResponse?.successFlag!!)
+                    {
+                        if (innerResponse.data?.DesignationId == "1" || innerResponse.data?.DesignationId == "4")
+                        {
+                            UserData.saveUser(innerResponse.data)
+                            App.isDataClear = false
+                            ActivityUtils.startMainActivity(this@LoginActivity)
+                            finish()
+                            progressDialog?.dismiss()
+                        }
+                        else
+                        {
+                            attemptLoginWithOld()
+                        }
+                    }
+                    else
+                    {
+                        ProgressDialogUtils.showError(progressDialog!!, getString(R.string.oops), innerResponse.activityInfo) //                        Utilities.showToast(this@LoginActivity, innerResponse.activityInfo)
+                    }
+                }
+                else
+                { // Show API error.
+                    ProgressDialogUtils.showError(progressDialog!!, getString(R.string.oops), response.message())
+                }
+            }
+            catch (e: Exception)
+            {
+                Toast.makeText(this@LoginActivity, "Error Occurred: ${e.message}", Toast.LENGTH_LONG).show()
+                progressDialog?.dismiss()
+            }
+        }
+    }
+
+    fun attemptLoginWithOld()
+    {
+        lifecycleScope.launch {
+            progressDialog = ProgressDialogUtils.createProgressDialog(this@LoginActivity)
+            progressDialog?.setOnShowListener { dialog ->
+                val alertDialog = dialog as SweetAlertDialog
+                val text: TextView = alertDialog.findViewById<View>(R.id.title_text) as TextView
+                text.textAlignment = View.TEXT_ALIGNMENT_CENTER
+                text.isSingleLine = false
+            }
+            progressDialog?.show()
+            try
+            {
+                val request = RequestLogin(binding?.username?.text?.toString(), binding?.password?.text.toString(), Utilities.getDeviceUdId(this@LoginActivity))
                 val response = ApiAdapter.apiClient.login(request)
 
                 if (response.isValid())
