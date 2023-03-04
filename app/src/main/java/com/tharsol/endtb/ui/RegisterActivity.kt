@@ -33,10 +33,10 @@ class RegisterActivity : BaseActivity()
         ViewUtils.updateTbProgramText(binding!!.textViewDescpLabel)
         onClickListeners()
 
-        binding?.buttonSignupType?.onPositionChangedListener = OnPositionChangedListener {
-            if (it == 0) binding?.editTextLincenseNumber?.setHint("License Number")
-            else binding?.editTextLincenseNumber?.setHint("PMDC Number")
-        }
+//        binding?.buttonSignupType?.onPositionChangedListener = OnPositionChangedListener {
+//            if (it == 0) binding?.editTextLincenseNumber?.setHint("License Number")
+//            else binding?.editTextLincenseNumber?.setHint("PMDC Number")
+//        }
     }
 
     /*override fun onUp()
@@ -68,13 +68,13 @@ class RegisterActivity : BaseActivity()
         }
         binding?.editTextMobile?.setError(null)
 
-        if (TextUtils.isEmpty(binding?.editTextLincenseNumber?.text))
-        {
-            binding?.editTextLincenseNumber?.setError(getString(R.string.error_empty_field))
-            ViewUtils.requestFocus(binding?.editTextLincenseNumber)
-            return
-        }
-        binding?.editTextLincenseNumber?.setError(null)
+//        if (TextUtils.isEmpty(binding?.editTextLincenseNumber?.text))
+//        {
+//            binding?.editTextLincenseNumber?.setError(getString(R.string.error_empty_field))
+//            ViewUtils.requestFocus(binding?.editTextLincenseNumber)
+//            return
+//        }
+//        binding?.editTextLincenseNumber?.setError(null)
 
         if (TextUtils.isEmpty(binding?.editTextUserName?.text))
         {

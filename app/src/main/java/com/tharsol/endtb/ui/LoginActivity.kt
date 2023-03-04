@@ -141,14 +141,7 @@ class LoginActivity : BaseActivity()
     fun attemptLoginWithOld()
     {
         lifecycleScope.launch {
-            progressDialog = ProgressDialogUtils.createProgressDialog(this@LoginActivity)
-            progressDialog?.setOnShowListener { dialog ->
-                val alertDialog = dialog as SweetAlertDialog
-                val text: TextView = alertDialog.findViewById<View>(R.id.title_text) as TextView
-                text.textAlignment = View.TEXT_ALIGNMENT_CENTER
-                text.isSingleLine = false
-            }
-            progressDialog?.show()
+
             try
             {
                 val request = RequestLogin(binding?.username?.text?.toString(), binding?.password?.text.toString(), Utilities.getDeviceUdId(this@LoginActivity))

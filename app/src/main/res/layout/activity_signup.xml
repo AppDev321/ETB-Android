@@ -39,6 +39,7 @@
                 android:layout_marginEnd="@dimen/dimen_size_16dp"
                 android:background="@color/white"
                 android:elevation="2dp"
+                android:visibility="gone"
                 app:borderColor="@color/colorPrimary"
                 app:borderWidth="1dp"
                 app:divider="@color/colorPrimary"
@@ -48,7 +49,8 @@
                 app:radius="40dp"
                 app:ripple="true"
                 app:rippleColor="@color/colorPrimary"
-                app:selectedBackground="@color/colorPrimary">
+                app:selectedBackground="@color/colorPrimary"
+                tools:visibility="gone">
 
                 <com.addisonelliott.segmentedbutton.SegmentedButton
                     android:id="@+id/buttonPharmacy"
@@ -69,6 +71,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/open_sans_regular"
                     android:padding="10dp"
+                    android:visibility="gone"
                     app:selectedTextColor="#fff"
                     app:text="DOCTOR"
                     app:textColor="@color/black"

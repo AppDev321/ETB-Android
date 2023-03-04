@@ -36,6 +36,7 @@ class NotificationDetailActivity : BaseActivity() {
                 {
                     val intent = Intent(this@NotificationDetailActivity, FullScreenImageActivity::class.java).apply {
                         putExtra("image", notificationData.image)
+                        putExtra("name", notificationData.patientName)
                     }
                     startActivity(intent)
                 }
@@ -51,6 +52,7 @@ class NotificationDetailActivity : BaseActivity() {
                 {
                     val intent = Intent(this@NotificationDetailActivity, FullScreenImageActivity::class.java).apply {
                         putExtra("image", notificationData.image)
+                        putExtra("name", notificationData.patientName)
                     }
                     startActivity(intent)
                 }

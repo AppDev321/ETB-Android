@@ -122,5 +122,7 @@
     <string name="mobile_application_to_notify_tb_cases">Mobile Application To Notify TB Cases</string>
     <string name="upload_prescription_image_here">Upload Prescription image here</string>
     <string name="notifcations">Notifcations</string>
+    <string name="permission_title">Storage Permission</string>
+    <string name="write_permission_request">Please allow permission to app to save images to phone</string>
 
 </resources>

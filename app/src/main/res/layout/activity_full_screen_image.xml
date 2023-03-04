@@ -10,14 +10,21 @@
         android:id="@+id/include"
         layout="@layout/content_appbar"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+        tools:layout_editor_absoluteY="0dp"
 
-    <ImageView
+
+        />
+
+    <com.tharsol.endtb.ui.widget.CustomZoomView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
 
         app:layout_constraintTop_toBottomOf="@+id/include" />
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
