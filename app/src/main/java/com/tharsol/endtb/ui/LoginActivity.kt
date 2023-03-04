@@ -32,7 +32,7 @@ class LoginActivity : BaseActivity()
         updateTitle(binding?.include?.topBarTitle, getString(R.string.login_title))
         updateHome(binding?.include?.btnUp, true)
         onClickListeners()
-        ViewUtils.updateTbProgramText(binding!!.textViewDescpLabel)
+//        ViewUtils.updateTbProgramText(binding!!.textViewDescpLabel)
         binding?.btnSignup?.text = TextUtils.concat(binding?.btnSignup?.text, " ", Utilities.changeForeground(getString(R.string.sign_up), ContextCompat.getColor(this, R.color.rb_darken_color)))
     }
 

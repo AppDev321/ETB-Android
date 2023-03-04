@@ -42,6 +42,6 @@
             android:layout_marginEnd="@dimen/dimen_size_8dp"
             android:contentDescription="back"
             android:src="@drawable/saveicon"
-            android:visibility="visible" />
+            android:visibility="gone" />
     </LinearLayout>
 </LinearLayout>

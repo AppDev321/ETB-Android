@@ -37,19 +37,13 @@
                     <ImageView
                         android:id="@+id/imageView2"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/ic_logo_health" />
+                        android:layout_height="72dp"
+                        app:srcCompat="@drawable/ic_logo_mc" />
 
                     <Space
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1" />
-
-                    <ImageView
-                        android:id="@+id/imageView7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/ic_logo_togehter" />
 
                     <Space
                         android:layout_width="0dp"
@@ -59,10 +53,10 @@
                     <ImageView
                         android:id="@+id/punjab"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/imageView2"
-                        app:srcCompat="@drawable/ic_punjab_govt" />
+                        app:srcCompat="@drawable/ic_logo_togehter" />
                 </LinearLayout>
 
                 <ImageView
@@ -174,13 +168,6 @@
                         android:text="@string/don_t_have_an_account_sign_up"
                         android:textSize="@dimen/text_size_16sp" />
 
-                    <TextView
-                        android:id="@+id/textViewDescpLabel"
-                        style="@style/tbControlTextViewStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/dimen_size_100dp"
-                        android:gravity="center"
-                        android:visibility="visible" />
                 </LinearLayout>
 
 
@@ -197,26 +184,41 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
         android:padding="@dimen/dimen_size_12dp">
 
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="@dimen/dimen_size_120dp"
-            android:layout_height="@dimen/dimen_size_30dp"
-            app:srcCompat="@drawable/ic_stop_tb" />
-
-        <Space
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:id="@+id/linearLayout23"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="@dimen/dimen_size_12dp">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="@dimen/dimen_size_92dp"
-            android:layout_height="@dimen/dimen_size_34dp"
-            app:srcCompat="@drawable/ic_dopasi" />
+            <TextView
+                android:id="@+id/text"
+                style="@style/MenuItems"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="IN PARTNERSHIP WITH"
+                android:visibility="visible"
+                tools:visibility="visible" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="@dimen/dimen_size_92dp"
+                android:layout_height="@dimen/dimen_size_34dp"
+                app:srcCompat="@drawable/ic_dopasi" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

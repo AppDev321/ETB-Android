@@ -26,9 +26,9 @@ class WelcomeActivity : BaseActivity(), View.OnClickListener {
             ActivityUtils.startLoginActivity(this)
             finish()
         }
-        binding!!.textView2.setOnClickListener(this)
-        binding!!.imageView5.setOnClickListener(this)
-        ViewUtils.updateTbProgramText(binding!!.textViewDescpLabel)
+//        binding!!.textView2.setOnClickListener(this)
+//        binding!!.imageView5.setOnClickListener(this)
+//        ViewUtils.updateTbProgramText(binding!!.textViewDescpLabel)
         if (ActivityCompat.checkSelfPermission(
                 this,
                 WRITE_EXTERNAL_STORAGE

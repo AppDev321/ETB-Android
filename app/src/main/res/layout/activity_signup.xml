@@ -152,44 +152,41 @@
                 android:text="@string/sign_up"
                 android:textSize="@dimen/text_size_16sp" />
 
-            <TextView
-                android:id="@+id/textViewDescpLabel"
-                style="@style/tbControlTextViewStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_size_16dp"
-                android:layout_marginBottom="@dimen/dimen_size_16dp"
-                android:gravity="center"
-                android:visibility="visible"
-                app:layout_constraintBottom_toTopOf="@+id/imageView4"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
 
             <LinearLayout
+                android:id="@+id/linearLayout2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dimen_size_8dp"
-                android:layout_marginEnd="@dimen/dimen_size_8dp"
-                android:layout_marginBottom="@dimen/dimen_size_16dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:layout_alignParentBottom="true"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="@dimen/dimen_size_12dp">
 
-                <ImageView
-                    android:id="@+id/imageView4"
-                    android:layout_width="@dimen/dimen_size_150dp"
-                    android:layout_height="@dimen/dimen_size_37dp"
-                    app:srcCompat="@drawable/ic_stop_tb" />
-
-                <Space
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="@dimen/dimen_size_92dp"
-                    android:layout_height="@dimen/dimen_size_34dp"
-                    app:srcCompat="@drawable/ic_dopasi" />
+                    <TextView
+                        android:id="@+id/text"
+                        style="@style/MenuItems"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="IN PARTNERSHIP WITH"
+                        android:visibility="visible"
+                        tools:visibility="visible" />
+
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="@dimen/dimen_size_92dp"
+                        android:layout_height="@dimen/dimen_size_34dp"
+                        app:srcCompat="@drawable/ic_dopasi" />
+
+                </LinearLayout>
 
             </LinearLayout>
 

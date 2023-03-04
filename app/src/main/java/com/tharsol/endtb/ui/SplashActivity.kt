@@ -54,7 +54,7 @@ class SplashActivity : BaseActivity() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
-       ViewUtils.updateTbProgramText(binding.textViewDescpLabel)
+//       ViewUtils.updateTbProgramText(binding.textViewDescpLabel)
 //        mVisible = true
 
     }

@@ -30,7 +30,7 @@ class RegisterActivity : BaseActivity()
         setContentView(binding?.root)
         updateTitle(binding?.include?.topBarTitle, getString(R.string.sign_up))
         updateHome(binding?.include?.btnUp, true)
-        ViewUtils.updateTbProgramText(binding!!.textViewDescpLabel)
+//        ViewUtils.updateTbProgramText(binding!!.textViewDescpLabel)
         onClickListeners()
 
 //        binding?.buttonSignupType?.onPositionChangedListener = OnPositionChangedListener {
