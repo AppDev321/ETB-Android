@@ -71,7 +71,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.tharsol.endtb.fileprovider"
+            android:authorities="com.tharsol.rxtracker.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ETB</string>
+    <string name="app_name">RxTracker</string>
     <string name="error_msg_internet">Internet is not connected</string>
     <string name="retry">RETRY</string>
     <string name="view">View</string>
