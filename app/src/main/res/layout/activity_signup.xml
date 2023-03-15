@@ -14,7 +14,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="587dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,8 +23,8 @@
 
             <ImageView
                 android:id="@+id/imageView3"
-                android:layout_width="@dimen/logo_width"
-                android:layout_height="@dimen/logo_height"
+                android:layout_width="240dp"
+                android:layout_height="76dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/dimen_size_32dp"
                 app:srcCompat="@drawable/ic_logo_tb_m" />
@@ -153,43 +153,43 @@
                 android:textSize="@dimen/text_size_16sp" />
 
 
-            <LinearLayout
-                android:id="@+id/linearLayout2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:gravity="center_horizontal"
-                android:orientation="vertical"
-                android:padding="@dimen/dimen_size_12dp">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/text"
-                        style="@style/MenuItems"
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="IN PARTNERSHIP WITH"
-                        android:visibility="visible"
-                        tools:visibility="visible" />
-
-
-                    <ImageView
-                        android:id="@+id/imageView"
-                        android:layout_width="@dimen/dimen_size_92dp"
-                        android:layout_height="@dimen/dimen_size_34dp"
-                        app:srcCompat="@drawable/ic_dopasi" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
         </LinearLayout>
     </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text"
+                style="@style/MenuItems"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="IN PARTNERSHIP WITH"
+                android:visibility="visible"
+                tools:visibility="visible" />
+
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="@dimen/dimen_size_92dp"
+                android:layout_height="@dimen/dimen_size_34dp"
+                android:layout_marginTop="@dimen/dimen_size_10dp"
+                app:srcCompat="@drawable/ic_dopasi" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 </LinearLayout>
