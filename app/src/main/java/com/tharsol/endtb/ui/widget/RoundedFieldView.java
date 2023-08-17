@@ -21,7 +21,7 @@ import carbon.widget.LinearLayout;
 
 public class RoundedFieldView extends LinearLayout
 {
-    private carbon.widget.LinearLayout mLinearLayoutContainer;
+    private LinearLayout mLinearLayoutContainer;
     private final EditText mEditText;
     private TextView mTextViewPrefix;
     private String mPrefix;
@@ -53,7 +53,7 @@ public class RoundedFieldView extends LinearLayout
         int valueInPixels16 = (int) getResources().getDimension(R.dimen.dimen_size_16dp);
         int valueInPixels4 = (int) getResources().getDimension(R.dimen.dimen_size_4dp);
         setPaddingRelative(valueInPixels16, valueInPixels4, valueInPixels16, (int) getResources().getDimension(R.dimen.dimen_size_16dp));
-        LinearLayout.LayoutParams layoutRoot = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        LayoutParams layoutRoot = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         setLayoutParams(layoutRoot);
         setId(mEditText.getId());
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.RoundedFieldView);
@@ -66,7 +66,7 @@ public class RoundedFieldView extends LinearLayout
 
         mLinearLayoutContainer = new LinearLayout(context);
 
-        LinearLayout.LayoutParams layoutContainer = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) getResources().getDimension(R.dimen.dimen_size_48dp));
+        LayoutParams layoutContainer = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) getResources().getDimension(R.dimen.dimen_size_48dp));
         layoutContainer.gravity = Gravity.CENTER_VERTICAL;
 
 
@@ -79,7 +79,7 @@ public class RoundedFieldView extends LinearLayout
         mLinearLayoutContainer.setElevationShadowColor(Color.RED);
         mLinearLayoutContainer.setOrientation(HORIZONTAL);
         mLinearLayoutContainer.setLayoutParams(layoutContainer);
-        LinearLayout.LayoutParams layout3 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        LayoutParams layout3 = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         layout3.gravity = Gravity.CENTER_VERTICAL;
         mEditText.setLayoutParams(layout3);
 
@@ -88,7 +88,7 @@ public class RoundedFieldView extends LinearLayout
         mTextViewPrefix.setTextColor(mEditText.getTextColors());
         mTextViewPrefix.setTextSize(TypedValue.COMPLEX_UNIT_PX, mEditText.getTextSize());
 
-        LinearLayout.LayoutParams layoutPrefix = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        LayoutParams layoutPrefix = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         layoutPrefix.gravity = Gravity.CENTER_VERTICAL;
         if (!TextUtils.isEmpty(mPrefix))
         {

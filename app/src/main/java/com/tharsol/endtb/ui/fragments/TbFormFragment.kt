@@ -2,10 +2,14 @@ package com.tharsol.endtb.ui.fragments
 
 import android.Manifest
 import android.app.Activity
+import android.app.AlertDialog
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
@@ -18,6 +22,7 @@ import android.widget.CompoundButton
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
@@ -29,7 +34,6 @@ import com.tharsol.endtb.R
 import com.tharsol.endtb.database.AppDb
 import com.tharsol.endtb.databinding.FragmentTbFormBinding
 import com.tharsol.endtb.deserialize.Patient
-import com.tharsol.endtb.deserialize.Product
 import com.tharsol.endtb.extenstions.getNumberWithoutSpace
 import com.tharsol.endtb.extenstions.isValid
 import com.tharsol.endtb.model.RefreshProduct
@@ -37,7 +41,6 @@ import com.tharsol.endtb.model.SearchedPatient
 import com.tharsol.endtb.model.SingleItem
 import com.tharsol.endtb.network.ApiAdapter
 import com.tharsol.endtb.ui.FrameActivity
-import com.tharsol.endtb.ui.helpers.TbProductItem
 import com.tharsol.endtb.ui.widget.Dialogs
 import com.tharsol.endtb.util.*
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
@@ -47,24 +50,25 @@ import kotlinx.coroutines.launch
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
+import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class TbFormFragment : Fragment(), View.OnClickListener, CompoundButton.OnCheckedChangeListener
 {
     private val REQUEST_PATIENT_CODE: Int = 4568
     private val REQUEST_PICTURE_CODE: Int = 1245
+    private val REQUEST_PICK_PICTURE_CODE: Int = 1246
     private lateinit var binding: FragmentTbFormBinding
     private var progressDialog: SweetAlertDialog? = null
     private var pictureFile: String? = null
     private var district: SingleItem? = null
-    private var locality: SingleItem? = null
-    private val productViews = ArrayList<TbProductItem>()
-    private var products: List<Product>? = null
+//    private var locality: SingleItem? = null
+//    private val productViews = ArrayList<TbProductItem>()
+//    private var products: List<Product>? = null
     private var listener: TopSearchListener? = null
 
     var mPatient: Patient? = null
@@ -96,7 +100,7 @@ class TbFormFragment : Fragment(), View.OnClickListener, CompoundButton.OnChecke
             val animation = AnimationUtils.loadAnimation(context, R.anim.shake)
             listener?.getSearchView()?.startAnimation(animation)
         }
-        loadProducts()
+//        loadProducts()
         enableActivity(false)
         onClickListeners()
 
@@ -120,25 +124,28 @@ class TbFormFragment : Fragment(), View.OnClickListener, CompoundButton.OnChecke
         binding.btnConfirm.setOnClickListener {
             submit()
         }
-        binding.btnAddProduct.setOnClickListener(this)
+//        binding.btnAddProduct.setOnClickListener(this)
         binding.ivPrescription.setOnClickListener(this)
-        binding.tvPrescription.setOnClickListener(this)
+        binding.tvPrescription.setOnClickListener {
+
+            pickImage()
+        }
         binding.editTextDistrict.setOnClickListener(this)
-        binding.editTextLocality.setOnClickListener(this)
+//        binding.editTextLocality.setOnClickListener(this)
         binding.cbFemale.setOnCheckedChangeListener(this)
         binding.cbMale.setOnCheckedChangeListener(this)
         binding.cbOther.setOnCheckedChangeListener(this)
         binding.editTextDistrict.editor.setOnClickListener { showDistrictDialog() }
-        binding.editTextLocality.editor.setOnClickListener {
-            if (TextUtils.isEmpty(binding.editTextDistrict.text))
-            {
-                binding.editTextDistrict.setError(getString(R.string.error_district_first))
-            }
-            else
-            {
-                showLocalityDialog()
-            }
-        }
+//        binding.editTextLocality.editor.setOnClickListener {
+//            if (TextUtils.isEmpty(binding.editTextDistrict.text))
+//            {
+//                binding.editTextDistrict.setError(getString(R.string.error_district_first))
+//            }
+//            else
+//            {
+//                showLocalityDialog()
+//            }
+//        }
     }
 
     private fun submit()
@@ -187,12 +194,12 @@ class TbFormFragment : Fragment(), View.OnClickListener, CompoundButton.OnChecke
             return
         }
 
-        if (locality == null || locality?.value == 0)
-        {
-            binding.editTextLocality.setError(getString(R.string.error_empty_field))
-            ViewUtils.requestFocus(binding.editTextLocality)
-            return
-        }
+//        if (locality == null || locality?.value == 0)
+//        {
+//            binding.editTextLocality.setError(getString(R.string.error_empty_field))
+//            ViewUtils.requestFocus(binding.editTextLocality)
+//            return
+//        }
 
         if (TextUtils.isEmpty(pictureFile))
         {
@@ -200,21 +207,21 @@ class TbFormFragment : Fragment(), View.OnClickListener, CompoundButton.OnChecke
             return
         }
 
-        if (productViews.isNullOrEmpty())
-        {
-            Utilities.showToast(requireContext(), getString(R.string.error_transaction))
-            return
-        }
+//        if (productViews.isNullOrEmpty())
+//        {
+//            Utilities.showToast(requireContext(), getString(R.string.error_transaction))
+//            return
+//        }
 
         if (isEmptyProduct()) return
 
         if (mPatient == null)
         {
-            mPatient = Patient(mobileNumber = binding.editTextMobile.getNumberWithoutSpace(), locality = locality?.value, name = binding.editTextPatientName.text.toString(), age = binding.editTextPatientAge.text.toString().toInt(), gender = getGender(), cnic = binding.editTextCnicNumber.text.toString())
+            mPatient = Patient(mobileNumber = binding.editTextMobile.getNumberWithoutSpace(), name = binding.editTextPatientName.text.toString(), age = binding.editTextPatientAge.text.toString().toInt(), gender = getGender(), cnic = binding.editTextCnicNumber.text.toString())
         }
         mPatient?.image = pictureFile
         mPatient?.addedBy = UserData.user?.userId
-        mPatient?.transactions = productViews.map { it.getItem() }
+//        mPatient?.transactions = productViews.map { it.getItem() }
         println("PATIENT ID:" + mPatient?.id)
         request()
     }
@@ -283,7 +290,7 @@ class TbFormFragment : Fragment(), View.OnClickListener, CompoundButton.OnChecke
 
     @Subscribe fun loadEvent(item: RefreshProduct)
     {
-        loadProducts()
+//        loadProducts()
     }
 
     private fun isGenderSelected(): Boolean
@@ -301,54 +308,55 @@ class TbFormFragment : Fragment(), View.OnClickListener, CompoundButton.OnChecke
         binding.editTextCnicNumber.isEnabled = enable
         enableGenderViews(true)
         binding.editTextDistrict.isEnabled = enable
-        binding.editTextLocality.isEnabled = enable
+//        binding.editTextLocality.isEnabled = enable
     }
 
 
     override fun onClick(v: View)
     {
-        when (v.id)
-        {
-            R.id.btnAddProduct                       ->
-            {
-                onAddProduct()
-            }
-            R.id.ivPrescription, R.id.tvPrescription ->
-            {
-                pickImage()
-            }
-        }
+        pickImage()
+//        when (v.id)
+//        {
+////            R.id.btnAddProduct                       ->
+////            {
+////                onAddProduct()
+////            }
+//            R.id.ivPrescription, R.id.tvPrescription ->
+//            {
+//                pickImage()
+//            }
+//        }
     }
 
     private fun onAddProduct()
     {
-        if (products.isNullOrEmpty())
-        {
-            loadProducts()
-            if (products.isNullOrEmpty())
-            {
-                Utilities.showToast(requireContext(), getString(R.string.error_product_sync))
-                return
-            }
-        }
+//        if (products.isNullOrEmpty())
+//        {
+////            loadProducts()
+//            if (products.isNullOrEmpty())
+//            {
+//                Utilities.showToast(requireContext(), getString(R.string.error_product_sync))
+//                return
+//            }
+//        }
         if (isEmptyProduct()) return
-        val item = object : TbProductItem(requireContext(), mPatient?.id, products!!)
-        {
-            override fun onRemove(item: TbProductItem)
-            {
-                this@TbFormFragment.binding.productsContainer.removeView(item.getView())
-                productViews.remove(item)
-            }
-        }
-        productViews.add(item)
-        this@TbFormFragment.binding.productsContainer.addView(item.getView())
+//        val item = object : TbProductItem(requireContext(), mPatient?.id, products!!)
+//        {
+//            override fun onRemove(item: TbProductItem)
+//            {
+//                this@TbFormFragment.binding.productsContainer.removeView(item.getView())
+//                productViews.remove(item)
+//            }
+//        }
+//        productViews.add(item)
+//        this@TbFormFragment.binding.productsContainer.addView(item.getView())
     }
 
     private fun isEmptyProduct(): Boolean
     { //        if (productViews.isEmpty()) return true
-        productViews.forEach {
-            if (it.isEmpty()) return true
-        }
+//        productViews.forEach {
+//            if (it.isEmpty()) return true
+//        }
         return false
     }
 
@@ -424,7 +432,7 @@ class TbFormFragment : Fragment(), View.OnClickListener, CompoundButton.OnChecke
                 district = singleItem
                 binding.editTextDistrict.setText(singleItem?.title)
                 binding.editTextDistrict.setError(null)
-                binding.editTextLocality.setText("");
+//                binding.editTextLocality.setText("");
             }
 
         })
@@ -441,9 +449,9 @@ class TbFormFragment : Fragment(), View.OnClickListener, CompoundButton.OnChecke
         {
             override fun onItemSelected(dialogInterface: DialogInterface?, singleItem: SingleItem?)
             {
-                locality = singleItem
-                binding.editTextLocality.setText(singleItem?.title)
-                binding.editTextLocality.setError(null)
+//                locality = singleItem
+//                binding.editTextLocality.setText(singleItem?.title)
+//                binding.editTextLocality.setError(null)
             }
 
         })
@@ -458,27 +466,35 @@ class TbFormFragment : Fragment(), View.OnClickListener, CompoundButton.OnChecke
         EventBus.getDefault().unregister(this)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?)
     {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_PICTURE_CODE && resultCode == Activity.RESULT_OK)
+
+        if ((requestCode == REQUEST_PICTURE_CODE || requestCode == REQUEST_PICK_PICTURE_CODE) && resultCode == Activity.RESULT_OK)
         {
-            try
-            {
-                loadPlaceImage(currentPhotoPath)
-                try
-                {
-                    pictureFile = ImageUtil.convertBase64(currentPhotoPath)
+
+
+            if (requestCode === REQUEST_PICK_PICTURE_CODE) {
+                if (data != null) {
+                    val contentURI = data.data
+                    try {
+
+                        binding.ivPrescription.setImageURI(contentURI)
+                        pictureFile = encodeImage(MediaStore.Images.Media.getBitmap(requireContext().contentResolver, contentURI))
+
+                        Utilities.showToast(requireContext(), pictureFile)
+                    } catch (e: IOException) {
+                        e.printStackTrace()
+
+                    }
                 }
-                catch (e: java.lang.Exception)
-                {
-                    e.printStackTrace()
-                    Utilities.showToast(requireContext(), getString(R.string.an_error_occurred_image))
-                }
-            }
-            catch (e: java.lang.Exception)
-            {
-                e.printStackTrace()
+            } else if (requestCode === REQUEST_PICTURE_CODE) {
+                val thumbnail: Bitmap? = data!!.extras!!["data"] as Bitmap?
+
+                pictureFile = encodeImage(thumbnail!!)
+                binding.ivPrescription.setImageBitmap(thumbnail)
+                //saveImage(thumbnail)
+
             }
         }
         else if (requestCode == REQUEST_PATIENT_CODE && resultCode == Activity.RESULT_OK)
@@ -516,10 +532,16 @@ class TbFormFragment : Fragment(), View.OnClickListener, CompoundButton.OnChecke
         patient.gender?.let {
             disableGenders(it)
         }
-        loadData(patient.locality)
+//        loadData(patient.locality)
     }
 
-
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun encodeImage(bm: Bitmap): String? {
+        val baos = ByteArrayOutputStream()
+        bm.compress(Bitmap.CompressFormat.JPEG, 70, baos)
+        val b = baos.toByteArray()
+        return Base64.getEncoder().encodeToString(b)
+    }
     private fun clearFormData()
     {
         binding.editTextMobile.setText("")
@@ -528,10 +550,10 @@ class TbFormFragment : Fragment(), View.OnClickListener, CompoundButton.OnChecke
         binding.editTextCnicNumber.text.clear()
         district = null
         binding.editTextDistrict.text.clear()
-        locality = null
-        binding.editTextLocality.text.clear()
-        productViews.clear()
-        binding.productsContainer.removeAllViews()
+//        locality = null
+//        binding.editTextLocality.text.clear()
+//        productViews.clear()
+//        binding.productsContainer.removeAllViews()
         pictureFile = null
         Glide.with(this).load(R.drawable.ic_placeholde_p).apply(RequestOptions.bitmapTransform(RoundedCornersTransformation(resources.getDimension(R.dimen.dimen_size_8dp).toInt(), 3))).into(binding.ivPrescription)
         enableActivity(false)
@@ -543,11 +565,11 @@ class TbFormFragment : Fragment(), View.OnClickListener, CompoundButton.OnChecke
         item?.let {
             district = SingleItem(item.districtId, item.districtName)
             binding.editTextDistrict.editor.isEnabled = district == null
-            this@TbFormFragment.locality = SingleItem(item.localityId, item.localityName)
-            binding.editTextLocality.editor.isEnabled = this@TbFormFragment.locality == null
+//            this@TbFormFragment.locality = SingleItem(item.localityId, item.localityName)
+//            binding.editTextLocality.editor.isEnabled = this@TbFormFragment.locality == null
         }
         binding.editTextDistrict.setText(district?.title)
-        binding.editTextLocality.setText(this@TbFormFragment.locality?.title)
+//        binding.editTextLocality.setText(this@TbFormFragment.locality?.title)
     }
 
     var currentPhotoPath: String? = null
@@ -563,6 +585,7 @@ class TbFormFragment : Fragment(), View.OnClickListener, CompoundButton.OnChecke
 
     private fun dispatchTakePictureIntent()
     {
+        Toast.makeText(requireContext(), "dispatchTakePictureIntent", Toast.LENGTH_LONG).show()
         if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
         {
             ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA), 546)
@@ -621,7 +644,7 @@ class TbFormFragment : Fragment(), View.OnClickListener, CompoundButton.OnChecke
                 val asyn = async(Dispatchers.Default) {
                     AppDb.get().products().getProducts()
                 }
-                products = asyn.await()
+//                products = asyn.await()
             }
             catch (ex: Exception)
             {
@@ -654,7 +677,8 @@ class TbFormFragment : Fragment(), View.OnClickListener, CompoundButton.OnChecke
 
     private fun pickImage()
     {
-        showImagePickerOptions()
+        selectImage()
+//        showImagePickerOptions()
     }
 
     private fun showImagePickerOptions()
@@ -665,5 +689,48 @@ class TbFormFragment : Fragment(), View.OnClickListener, CompoundButton.OnChecke
     interface TopSearchListener
     {
         fun getSearchView(): EditText?
+    }
+
+    private fun selectImage() {
+
+        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
+        {
+            ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA), 546)
+            return
+        }
+
+
+        val options = arrayOf<CharSequence>("Take Photo", "Choose from Gallery", "Cancel")
+        val builder: AlertDialog.Builder = AlertDialog.Builder(this.context)
+        builder.setTitle("Add Photo!")
+        builder.setItems(options, DialogInterface.OnClickListener { dialog, item ->
+            if (options[item] == "Take Photo") {
+                val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+
+                val storageDir: File? = App.context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+                val f = File(storageDir, "temp.jpg")
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f))
+                //pic = f;
+                takePhotoFromCamera()
+            } else if (options[item] == "Choose from Gallery") {
+                val intent =
+                    Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                choosePhotoFromGallary()
+            } else if (options[item] == "Cancel") {
+                dialog.dismiss()
+            }
+        })
+        builder.show()
+    }
+
+    private fun choosePhotoFromGallary() {
+        val galleryIntent = Intent(Intent.ACTION_PICK)
+        galleryIntent.type = "image/*"
+        this.startActivityForResult(galleryIntent, REQUEST_PICK_PICTURE_CODE)
+    }
+
+    private fun takePhotoFromCamera() {
+        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        startActivityForResult(intent, REQUEST_PICTURE_CODE)
     }
 }
