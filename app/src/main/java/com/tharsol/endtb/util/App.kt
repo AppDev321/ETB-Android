@@ -19,9 +19,10 @@ class App : Application()
         myApp = this
         //        UploadService.NAMESPACE = BuildConfig.APPLICATION_ID
 
+
+        //
         HyperLog.initialize(this, 2592000)
         HyperLog.setLogLevel(Log.VERBOSE)
-
         try
         {
             val httpCacheDir = File(cacheDir, "eTBC")

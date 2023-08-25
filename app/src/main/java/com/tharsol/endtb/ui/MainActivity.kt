@@ -20,7 +20,7 @@ import com.tharsol.endtb.network.FullSync
 import com.tharsol.endtb.ui.fragments.StockFragment
 import com.tharsol.endtb.ui.fragments.TbFormFragment
 import com.tharsol.endtb.util.*
-import kotlinx.android.synthetic.main.nav_header_main.view.*
+//import kotlinx.android.synthetic.main.nav_header_main.view.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.joda.time.DateTime
@@ -43,7 +43,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             binding?.drawerLayout?.openDrawer(GravityCompat.START)
         }
         binding?.navView?.setNavigationItemSelectedListener(this)
-        binding!!.navView.getHeaderView(0).appVersion.text = MessageFormat.format("v{0}", Utilities.getCurrentAppVersion(this))
+//        binding!!.navView!!.getHeaderView(0)?,a.text = MessageFormat.format("v{0}", Utilities.getCurrentAppVersion(this))
         if (savedInstanceState == null) addFormFragment()
         updateUserInfo()
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED)
@@ -122,7 +122,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             for (itemNumber in 0 until it.size())
             {
                 val groupItems = it.getItem(itemNumber)
-                groupItems.title = Utilities.changeTextSize(Utilities.changeForeground(groupItems.title, ContextCompat.getColor(this, R.color.colorPrimary)), resources.getDimension(R.dimen.text_size_18sp).toInt())
+                groupItems.title = Utilities.changeTextSize(Utilities.changeForeground(groupItems.title!!, ContextCompat.getColor(this, R.color.colorPrimary)), resources.getDimension(R.dimen.text_size_18sp).toInt())
             }
         }
     }

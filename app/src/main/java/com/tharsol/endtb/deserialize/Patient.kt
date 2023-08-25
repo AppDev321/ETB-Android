@@ -50,8 +50,8 @@ data class Patient(
 	@field:SerializedName("Age")
 	val age: Int? = null,
 
-//	@field:SerializedName("Transactions")
-//	var transactions: List<TransProduct>? = null,
+	@field:SerializedName("Transactions")
+	var transactions: List<TransProduct>? = null,
 
 
 	) : Parcelable

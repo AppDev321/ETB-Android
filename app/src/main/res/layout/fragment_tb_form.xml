@@ -349,7 +349,6 @@
 
             </FrameLayout>
 
-
             <LinearLayout
                 android:id="@+id/mainMedContainer"
                 android:layout_width="match_parent"
@@ -391,7 +390,6 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical" />
             </LinearLayout>
-
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnConfirm"
                 style="@style/ButtonStyle"

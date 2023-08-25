@@ -34,6 +34,7 @@ import com.tharsol.endtb.R
 import com.tharsol.endtb.database.AppDb
 import com.tharsol.endtb.databinding.FragmentTbFormBinding
 import com.tharsol.endtb.deserialize.Patient
+import com.tharsol.endtb.deserialize.Product
 import com.tharsol.endtb.extenstions.getNumberWithoutSpace
 import com.tharsol.endtb.extenstions.isValid
 import com.tharsol.endtb.model.RefreshProduct
@@ -41,6 +42,7 @@ import com.tharsol.endtb.model.SearchedPatient
 import com.tharsol.endtb.model.SingleItem
 import com.tharsol.endtb.network.ApiAdapter
 import com.tharsol.endtb.ui.FrameActivity
+import com.tharsol.endtb.ui.helpers.TbProductItem
 import com.tharsol.endtb.ui.widget.Dialogs
 import com.tharsol.endtb.util.*
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
@@ -66,9 +68,9 @@ class TbFormFragment : Fragment(), View.OnClickListener, CompoundButton.OnChecke
     private var progressDialog: SweetAlertDialog? = null
     private var pictureFile: String? = null
     private var district: SingleItem? = null
-//    private var locality: SingleItem? = null
-//    private val productViews = ArrayList<TbProductItem>()
-//    private var products: List<Product>? = null
+    private var locality: SingleItem? = null
+    private val productViews = ArrayList<TbProductItem>()
+    private var products: List<Product>? = null
     private var listener: TopSearchListener? = null
 
     var mPatient: Patient? = null
@@ -100,7 +102,7 @@ class TbFormFragment : Fragment(), View.OnClickListener, CompoundButton.OnChecke
             val animation = AnimationUtils.loadAnimation(context, R.anim.shake)
             listener?.getSearchView()?.startAnimation(animation)
         }
-//        loadProducts()
+        loadProducts()
         enableActivity(false)
         onClickListeners()
 
@@ -124,28 +126,28 @@ class TbFormFragment : Fragment(), View.OnClickListener, CompoundButton.OnChecke
         binding.btnConfirm.setOnClickListener {
             submit()
         }
-//        binding.btnAddProduct.setOnClickListener(this)
+        binding.btnAddProduct.setOnClickListener(this)
         binding.ivPrescription.setOnClickListener(this)
         binding.tvPrescription.setOnClickListener {
 
             pickImage()
         }
         binding.editTextDistrict.setOnClickListener(this)
-//        binding.editTextLocality.setOnClickListener(this)
+        binding.editTextLocality.setOnClickListener(this)
         binding.cbFemale.setOnCheckedChangeListener(this)
         binding.cbMale.setOnCheckedChangeListener(this)
         binding.cbOther.setOnCheckedChangeListener(this)
         binding.editTextDistrict.editor.setOnClickListener { showDistrictDialog() }
-//        binding.editTextLocality.editor.setOnClickListener {
-//            if (TextUtils.isEmpty(binding.editTextDistrict.text))
-//            {
-//                binding.editTextDistrict.setError(getString(R.string.error_district_first))
-//            }
-//            else
-//            {
-//                showLocalityDialog()
-//            }
-//        }
+        binding.editTextLocality.editor.setOnClickListener {
+            if (TextUtils.isEmpty(binding.editTextDistrict.text))
+            {
+                binding.editTextDistrict.setError(getString(R.string.error_district_first))
+            }
+            else
+            {
+                showLocalityDialog()
+            }
+        }
     }
 
     private fun submit()
@@ -194,12 +196,12 @@ class TbFormFragment : Fragment(), View.OnClickListener, CompoundButton.OnChecke
             return
         }
 
-//        if (locality == null || locality?.value == 0)
-//        {
-//            binding.editTextLocality.setError(getString(R.string.error_empty_field))
-//            ViewUtils.requestFocus(binding.editTextLocality)
-//            return
-//        }
+        if (locality == null || locality?.value == 0)
+        {
+            binding.editTextLocality.setError(getString(R.string.error_empty_field))
+            ViewUtils.requestFocus(binding.editTextLocality)
+            return
+        }
 
         if (TextUtils.isEmpty(pictureFile))
         {
@@ -207,11 +209,11 @@ class TbFormFragment : Fragment(), View.OnClickListener, CompoundButton.OnChecke
             return
         }
 
-//        if (productViews.isNullOrEmpty())
-//        {
-//            Utilities.showToast(requireContext(), getString(R.string.error_transaction))
-//            return
-//        }
+        if (productViews.isNullOrEmpty())
+        {
+            Utilities.showToast(requireContext(), getString(R.string.error_transaction))
+            return
+        }
 
         if (isEmptyProduct()) return
 
@@ -221,7 +223,7 @@ class TbFormFragment : Fragment(), View.OnClickListener, CompoundButton.OnChecke
         }
         mPatient?.image = pictureFile
         mPatient?.addedBy = UserData.user?.userId
-//        mPatient?.transactions = productViews.map { it.getItem() }
+        mPatient?.transactions = productViews.map { it.getItem() }
         println("PATIENT ID:" + mPatient?.id)
         request()
     }
@@ -290,7 +292,7 @@ class TbFormFragment : Fragment(), View.OnClickListener, CompoundButton.OnChecke
 
     @Subscribe fun loadEvent(item: RefreshProduct)
     {
-//        loadProducts()
+        loadProducts()
     }
 
     private fun isGenderSelected(): Boolean
@@ -308,55 +310,56 @@ class TbFormFragment : Fragment(), View.OnClickListener, CompoundButton.OnChecke
         binding.editTextCnicNumber.isEnabled = enable
         enableGenderViews(true)
         binding.editTextDistrict.isEnabled = enable
-//        binding.editTextLocality.isEnabled = enable
+        binding.editTextLocality.isEnabled = enable
     }
 
 
     override fun onClick(v: View)
     {
-        pickImage()
-//        when (v.id)
-//        {
-////            R.id.btnAddProduct                       ->
-////            {
-////                onAddProduct()
-////            }
-//            R.id.ivPrescription, R.id.tvPrescription ->
-//            {
-//                pickImage()
-//            }
-//        }
+//        pickImage()
+        when (v.id)
+        {
+            R.id.btnAddProduct ->
+            {
+                onAddProduct()
+            }
+            R.id.ivPrescription, R.id.tvPrescription ->
+            {
+                pickImage()
+            }
+        }
     }
 
     private fun onAddProduct()
     {
-//        if (products.isNullOrEmpty())
-//        {
-////            loadProducts()
-//            if (products.isNullOrEmpty())
-//            {
-//                Utilities.showToast(requireContext(), getString(R.string.error_product_sync))
-//                return
-//            }
-//        }
-        if (isEmptyProduct()) return
-//        val item = object : TbProductItem(requireContext(), mPatient?.id, products!!)
-//        {
-//            override fun onRemove(item: TbProductItem)
-//            {
-//                this@TbFormFragment.binding.productsContainer.removeView(item.getView())
-//                productViews.remove(item)
-//            }
-//        }
-//        productViews.add(item)
-//        this@TbFormFragment.binding.productsContainer.addView(item.getView())
+        if (products.isNullOrEmpty())
+        {
+            loadProducts()
+            if (products.isNullOrEmpty())
+            {
+                Utilities.showToast(requireContext(), getString(R.string.error_product_sync))
+                return
+            }
+        }
+       // if (isEmptyProduct()) return
+        val item = object : TbProductItem(requireContext(), mPatient?.id, products!!)
+        {
+            override fun onRemove(item: TbProductItem)
+            {
+                this@TbFormFragment.binding.productsContainer.removeView(item.getView())
+                productViews.remove(item)
+            }
+        }
+        productViews.add(item)
+        this@TbFormFragment.binding.productsContainer.addView(item.getView())
     }
 
     private fun isEmptyProduct(): Boolean
-    { //        if (productViews.isEmpty()) return true
-//        productViews.forEach {
-//            if (it.isEmpty()) return true
-//        }
+    {
+        if (productViews.isEmpty()) return true
+        productViews.forEach {
+            if (it.isEmpty()) return true
+        }
         return false
     }
 
@@ -449,9 +452,9 @@ class TbFormFragment : Fragment(), View.OnClickListener, CompoundButton.OnChecke
         {
             override fun onItemSelected(dialogInterface: DialogInterface?, singleItem: SingleItem?)
             {
-//                locality = singleItem
-//                binding.editTextLocality.setText(singleItem?.title)
-//                binding.editTextLocality.setError(null)
+                locality = singleItem
+                binding.editTextLocality.setText(singleItem?.title)
+                binding.editTextLocality.setError(null)
             }
 
         })
@@ -550,10 +553,10 @@ class TbFormFragment : Fragment(), View.OnClickListener, CompoundButton.OnChecke
         binding.editTextCnicNumber.text.clear()
         district = null
         binding.editTextDistrict.text.clear()
-//        locality = null
-//        binding.editTextLocality.text.clear()
-//        productViews.clear()
-//        binding.productsContainer.removeAllViews()
+        locality = null
+        binding.editTextLocality.text.clear()
+        productViews.clear()
+        binding.productsContainer.removeAllViews()
         pictureFile = null
         Glide.with(this).load(R.drawable.ic_placeholde_p).apply(RequestOptions.bitmapTransform(RoundedCornersTransformation(resources.getDimension(R.dimen.dimen_size_8dp).toInt(), 3))).into(binding.ivPrescription)
         enableActivity(false)
@@ -565,11 +568,11 @@ class TbFormFragment : Fragment(), View.OnClickListener, CompoundButton.OnChecke
         item?.let {
             district = SingleItem(item.districtId, item.districtName)
             binding.editTextDistrict.editor.isEnabled = district == null
-//            this@TbFormFragment.locality = SingleItem(item.localityId, item.localityName)
-//            binding.editTextLocality.editor.isEnabled = this@TbFormFragment.locality == null
+            this@TbFormFragment.locality = SingleItem(item.localityId, item.localityName)
+            binding.editTextLocality.editor.isEnabled = this@TbFormFragment.locality == null
         }
         binding.editTextDistrict.setText(district?.title)
-//        binding.editTextLocality.setText(this@TbFormFragment.locality?.title)
+        binding.editTextLocality.setText(this@TbFormFragment.locality?.title)
     }
 
     var currentPhotoPath: String? = null
@@ -644,7 +647,7 @@ class TbFormFragment : Fragment(), View.OnClickListener, CompoundButton.OnChecke
                 val asyn = async(Dispatchers.Default) {
                     AppDb.get().products().getProducts()
                 }
-//                products = asyn.await()
+                products = asyn.await()
             }
             catch (ex: Exception)
             {
