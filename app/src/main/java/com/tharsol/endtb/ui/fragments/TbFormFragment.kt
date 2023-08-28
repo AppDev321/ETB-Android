@@ -680,6 +680,7 @@ class TbFormFragment : Fragment(), View.OnClickListener, CompoundButton.OnChecke
 
     private fun pickImage()
     {
+        Utilities.showToast(requireContext(),"Button test")
         selectImage()
 //        showImagePickerOptions()
     }

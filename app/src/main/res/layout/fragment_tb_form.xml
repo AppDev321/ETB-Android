@@ -328,6 +328,7 @@
                 android:ellipsize="end"
                 android:gravity="center"
                 android:maxLines="1"
+                android:paddingVertical="@dimen/dimen_size_4dp"
                 android:text="@string/upload_prescription_image_here"
                 android:textColor="@color/colorPrimary"
                 app:drawableEndCompat="@drawable/ic_camera_plus" />
@@ -374,14 +375,14 @@
                     <TextView
                         android:id="@+id/btnAddProduct"
                         style="@style/StockItemTextViewStyle"
-                        android:layout_width="@dimen/dimen_size_100dp"
-                        android:layout_height="32dp"
+                        android:layout_width="@dimen/_120sdp"
+                        android:layout_height="@dimen/_30sdp"
                         android:layout_gravity="center"
                         android:background="@drawable/ic_red_button_small"
                         android:gravity="center"
                         android:text="@string/add_product"
                         android:textAllCaps="true"
-                        android:textSize="@dimen/text_size_12sp" />
+                        android:textSize="@dimen/_12sdp" />
                 </LinearLayout>
 
                 <LinearLayout
