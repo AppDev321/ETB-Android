@@ -10,7 +10,7 @@ android {
 
     signingConfigs {
         release {
-//            storeFile file('D:\\Documents\\Github\\eTB-ANDROID\\app\\Key\\release-key.jks')
+           // storeFile file('D:\\Documents\\Github\\eTB-ANDROID\\app\\Key\\release-key.jks')
             storePassword 'cmdETB'
             keyAlias = 'release-key'
             keyPassword 'cmdETB'
@@ -24,8 +24,8 @@ android {
         applicationId "com.tharsol.endtb"
         minSdkVersion 21
         targetSdk 33
-        versionCode 8
-        versionName '1.0.8'
+        versionCode 9
+        versionName '1.0.9'
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
