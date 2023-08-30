@@ -680,7 +680,6 @@ class TbFormFragment : Fragment(), View.OnClickListener, CompoundButton.OnChecke
 
     private fun pickImage()
     {
-        Utilities.showToast(requireContext(),"Button test")
         selectImage()
 //        showImagePickerOptions()
     }
@@ -696,13 +695,18 @@ class TbFormFragment : Fragment(), View.OnClickListener, CompoundButton.OnChecke
     }
 
     private fun selectImage() {
-
-        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
-        {
-            ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA), 546)
+        if (ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.CAMERA
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                requireActivity(),
+                arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA),
+                546
+            )
             return
         }
-
 
         val options = arrayOf<CharSequence>("Take Photo", "Choose from Gallery", "Cancel")
         val builder: AlertDialog.Builder = AlertDialog.Builder(this.context)
