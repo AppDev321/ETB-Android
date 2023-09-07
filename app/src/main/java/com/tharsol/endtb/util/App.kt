@@ -43,45 +43,5 @@ class App : Application()
         val context: Context
             get() = myApp!!.applicationContext
 
-        //        fun fixLeakCanary696(context: Context?) {
-        //            if (!isEmui) {
-        //                Log.w(TAG, "not emui")
-        //                return
-        //            }
-        //            try {
-        //                val clazz = Class.forName("android.gestureboost.GestureBoostManager")
-        //                Log.w(TAG, "clazz $clazz")
-        //                val _sGestureBoostManager = clazz.getDeclaredField("sGestureBoostManager")
-        //                _sGestureBoostManager.isAccessible = true
-        //                val _mContext = clazz.getDeclaredField("mContext")
-        //                _mContext.isAccessible = true
-        //                val sGestureBoostManager = _sGestureBoostManager[null]
-        //                if (sGestureBoostManager != null) {
-        //                    _mContext[sGestureBoostManager] = context
-        //                }
-        //            } catch (ignored: Exception) {
-        //                ignored.printStackTrace()
-        //            }
-        //        }
-        //
-        //        val isEmui: Boolean
-        //            get() = !TextUtils.isEmpty(getSystemProperty("ro.build.version.emui"))
-        //
-        //        fun getSystemProperty(propName: String): String? {
-        //            val line: String
-        //            var input: BufferedReader? = null
-        //            try {
-        //                val p = Runtime.getRuntime().exec("getprop $propName")
-        //                input = BufferedReader(InputStreamReader(p.inputStream, "UTF-8"), 1024)
-        //                line = input.readLine()
-        //                input.close()
-        //            } catch (ex: IOException) {
-        //                Log.w(TAG, "Unable to read sysprop $propName", ex)
-        //                return null
-        //            } finally {
-        //                IOUtils.closeQuietly(input)
-        //            }
-        //            return line
-        //        }
     }
 }

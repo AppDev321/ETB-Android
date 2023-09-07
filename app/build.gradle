@@ -67,7 +67,6 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.0'
     implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.10'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
     implementation 'com.hypertrack:hyperlog:0.0.10'
     implementation 'com.snatik:storage:2.1.0'
